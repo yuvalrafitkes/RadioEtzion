@@ -7,13 +7,12 @@ android {
         pickFirst 'META-INF/LICENSE'
 
     }
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.ibm.mysampleapp"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         manifestPlaceholders = ['appIdRedirectScheme': android.defaultConfig.applicationId]
@@ -32,8 +31,9 @@ android {
 
 dependencies {
     
-    compile ('com.ibm.mobilefirstplatform.clientsdk.android:push:3.+')
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:design:25.1.0'
+    implementation ('com.ibm.mobilefirstplatform.clientsdk.android:push:3.+')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:28.0.0'
 }
