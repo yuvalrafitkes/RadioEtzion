@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "YOUR_GOOGLE_PROJECT_NUMBER",
-    "firebase_url": "YOUR_FIREBASE_URL",
-    "project_id": "YOUR_GOOGLE_PROJECT_ID",
-    "storage_bucket": "YOUR_STORAGE_BUCKET_HOST"
+    "project_number": "292092606869",
+    "firebase_url": "https://radioetzion-dc2ca.firebaseio.com",
+    "project_id": "radioetzion-dc2ca",
+    "storage_bucket": "radioetzion-dc2ca.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "YOUR_MOBILE_SDK_APP_ID",
+        "mobilesdk_app_id": "1:292092606869:android:7434c1807fe53b6a",
         "android_client_info": {
           "package_name": "com.ibm.mobilefirstplatform.clientsdk.android.push"
         }
       },
       "oauth_client": [
         {
-          "client_id": "YOUR_OAUTH_CLIENT_ID",
+          "client_id": "292092606869-06g7ujggf34n5vmtdtbl34ha8spvic88.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "YOUR_API_KEY"
+          "current_key": "AIzaSyC29bcRYx4YQPGjgyQVHKj0RLP1lHD-GqY"
         }
       ],
       "services": {
@@ -39,20 +39,28 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "YOUR_MOBILE_SDK_APP_ID",
+        "mobilesdk_app_id": "1:292092606869:android:417599cbd89142db",
         "android_client_info": {
           "package_name": "com.ibm.mysampleapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "YOUR_OAUTH_CLIENT_ID",
+          "client_id": "292092606869-ord34p0f4c3toavu2jfiuv4hkm340rph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ibm.mysampleapp",
+            "certificate_hash": "9684adf741a532c5c346670c7743f922e6774500"
+          }
+        },
+        {
+          "client_id": "292092606869-06g7ujggf34n5vmtdtbl34ha8spvic88.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "YOUR_API_KEY"
+          "current_key": "AIzaSyC29bcRYx4YQPGjgyQVHKj0RLP1lHD-GqY"
         }
       ],
       "services": {
@@ -60,8 +68,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292092606869-06g7ujggf34n5vmtdtbl34ha8spvic88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
