@@ -1,13 +1,16 @@
-<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="20dp"
     android:gravity="center"
-    android:background="#7121F3">
+    android:background="#9754cb">
+
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="61dp"
+        android:layout_height="63dp"
+        android:layout_weight="1"
         android:src="@mipmap/ic_launcher"
-        android:layout_weight="1"/>
+        android:layout_marginRight="@dimen/_10sdp"/>
     <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -16,6 +19,7 @@
     android:layout_weight="2"
     android:textColor="#382727"
     android:id="@+id/itemShow_Name"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,10 +28,14 @@
         android:layout_weight="2"
         android:textColor="#fff"
         android:id="@+id/reporters_names"/>
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="70dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_weight="2"
-        android:id="@+id/itemPlay"/>
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/playBtn"
+        android:tint="@android:color/black"
+        android:background="#ff"/>
+
 </LinearLayout>
