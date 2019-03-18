@@ -2,11 +2,25 @@ package com.ibm.mysampleapp;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -26,6 +40,13 @@ public class Tab extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Context context;
+    private View rootView;
+
+    private List<ClsRadio> radioList;
+    private ListAdapter adapter;
+    private ListView listView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,7 +85,20 @@ public class Tab extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab, container, false);
+        rootView = inflater.inflate(R.layout.fragment_tab, container, false);
+        setPointer();
+        return rootView;
+    }
+
+    private void setPointer() {
+        context = getActivity();
+
+        listView = rootView.findViewById(R.id.list);
+        radioList = new ArrayList<>();
+        adapter = new ListAdapter(context, radioList);
+
+        new DataTask().execute();
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,4 +139,67 @@ public class Tab extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+    private class DataTask extends AsyncTask<Void, Void, String> {
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            HttpURLConnection connection = null;
+
+            try {
+                connection = (HttpURLConnection) new URL("http://be.repoai.com:5080/WebRTCAppEE/rest/broadcast/getVodList/0/100?fbclid=IwAR3T5numCWbEGoiDcbAbd9zlqUepMifjMOx-W3m5DpEIjXCMRR8u3lTFpFI").openConnection();
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = reader.readLine()) != null){
+                    sb.append(line);
+                }
+
+                reader.close();
+
+                return sb.toString();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            finally {
+                if(connection != null){
+                    connection.disconnect();
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String jsonString) {
+            if(jsonString != null){
+                try {
+                    JSONArray jsonArray = new JSONArray(jsonString);
+
+                    radioList.clear();
+                    for(int i=0; i<jsonArray.length(); i+=1){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        ClsRadio radio = new ClsRadio(jsonObject.getString("vodName"), jsonObject.getString("filePath"));
+                        radioList.add(radio);
+                    }
+
+                    adapter.notifyDataSetChanged();
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }
