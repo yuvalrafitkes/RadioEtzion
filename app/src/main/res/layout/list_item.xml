@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        app:srcCompat="@drawable/play_btn"
+        android:src="@drawable/ic_play"
         android:tint="@android:color/black"
         android:background="#00FFFFFF"/>
 
