@@ -137,8 +137,12 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.nav_search:
+            case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Conact_Us_Fragment()).commit();
+                break;
+
+                case R.id.nav_we:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new We_Fragment()).commit();
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
