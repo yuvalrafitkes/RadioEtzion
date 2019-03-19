@@ -96,6 +96,7 @@ public class Tab extends Fragment {
         listView = rootView.findViewById(R.id.list);
         radioList = new ArrayList<>();
         adapter = new ListAdapter(context, radioList);
+        listView.setAdapter(adapter);
 
         new DataTask().execute();
 
@@ -153,10 +154,11 @@ public class Tab extends Fragment {
             HttpURLConnection connection = null;
 
             try {
+                //conetion
                 connection = (HttpURLConnection) new URL("http://be.repoai.com:5080/WebRTCAppEE/rest/broadcast/getVodList/0/100?fbclid=IwAR3T5numCWbEGoiDcbAbd9zlqUepMifjMOx-W3m5DpEIjXCMRR8u3lTFpFI").openConnection();
 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
+                ////insert to string
                 StringBuilder sb = new StringBuilder();
                 String line;
 
