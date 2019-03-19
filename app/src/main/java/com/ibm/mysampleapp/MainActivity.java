@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
          * Attempt to register your Android device with your Bluemix Push Notifications service instance.
          * Developers should put their user ID as the first argument.
          */
-        push.registerDeviceWithUserId("YOUR_USER_ID", new MFPPushResponseListener<String>() {
+        push.registerDeviceWithUserId(null, new MFPPushResponseListener<String>() {
 
             @Override
             public void onSuccess(String response) {
