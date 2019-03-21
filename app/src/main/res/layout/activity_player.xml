@@ -6,7 +6,8 @@
 
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".PlayerActivity">
+    tools:context=".PlayerActivity"
+    android:background="@drawable/player_background">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolBar"
@@ -16,26 +17,20 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kol Etzion"
-            android:textColor="#fff"
-            android:textSize="@dimen/_20ssp" />
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="6"
         android:gravity="center"
         android:orientation="vertical">
 
 
         <ImageView
-            android:layout_width="@dimen/_250sdp"
-            android:layout_height="@dimen/_250sdp"
-            android:src="@drawable/cover_art" />
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/sound" />
 
         <TextView
             android:layout_width="match_parent"
@@ -59,7 +54,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="4">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -96,6 +91,25 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_toLeftOf="@+id/btnPause"
                 android:background="@drawable/ic_skipre" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:layout_above="@+id/seekBar"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/startTime"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="99:99"
+                android:layout_alignParentRight="true"
+                android:layout_above="@+id/seekBar"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/endTime"
+                android:textColor="#ffffff"/>
 
         </RelativeLayout>
 

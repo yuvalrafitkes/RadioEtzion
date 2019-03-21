@@ -2,24 +2,20 @@ package com.ibm.mysampleapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class PlayerActivity extends AppCompatActivity {
     Button btnPause,btnNext,btnPre;
+    String progName;
     TextView txtProgram;
     SeekBar seekBar;
     Context context;
@@ -33,7 +29,7 @@ public class PlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.player2);
+        setContentView(R.layout.activity_player);
         setPointer();
     }
 
@@ -70,7 +66,11 @@ public class PlayerActivity extends AppCompatActivity {
             mediaPlayer.release();
         }
         Intent i = getIntent();
-        Bundle bundle = i.getExtras();
+        //Bundle bundle = i.getExtras();
+
+        //MyProg = bundle.getParcelableArrayList("programs");
+
+        String url = i.getStringExtra("url");
 
 
         btnPause.setOnClickListener(new View.OnClickListener() {
