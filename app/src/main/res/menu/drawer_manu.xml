@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_mail"
+            android:icon="@drawable/ic_email"
+            android:title="Email" />
+
+        <item
+            android:id="@+id/nav_mic"
+            android:icon="@drawable/ic_mic_black_24dp"
+            android:title="Talk to me" />
+
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/ic_search"
+            android:title="Contact Us" />
+
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_exit"
+            android:title="Exit" />
+    </group>
+
+    <item android:title="Commuicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share"
+                android:title="Share" />
+
+            <item
+                android:id="@+id/nav_location"
+                android:icon="@drawable/ic_my_location"
+                android:title="Location" />
+        </menu>
+    </item>
+
+</menu>
