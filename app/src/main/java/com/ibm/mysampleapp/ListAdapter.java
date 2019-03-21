@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class ListAdapter extends BaseAdapter {
+public class ListAdapter extends BaseAdapter{
 
     private Context context;
     private List<ClsRadio> radioList;

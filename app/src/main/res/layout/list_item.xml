@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="20dp"
     android:gravity="center"
-    android:background="#9754cb">
+    android:background="#9754cb"
+    android:id="@+id/itemLinearBtn">
 
     <ImageView
         android:layout_width="61dp"
