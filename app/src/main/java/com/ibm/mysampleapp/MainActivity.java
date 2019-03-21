@@ -1,6 +1,7 @@
 package com.ibm.mysampleapp;
 
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -26,12 +27,25 @@ import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushResponseLis
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationListener;
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPSimplePushNotification;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener,
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
+
+public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener ,
         NavigationView.OnNavigationItemSelectedListener {
     private MFPPush push;
     private MFPPushNotificationListener notificationListener;
     TabLayout tabLayout;
+
     private DrawerLayout drawerLayout;
 
 
@@ -41,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         setContentView(R.layout.activity_main);
 
         setPointer();
-        setDrawer();
+        navigationBar();
+
 
         // Core SDK must be initialized to interact with Bluemix Mobile services.
         BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_US_SOUTH);
@@ -59,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
          * Attempt to register your Android device with your Bluemix Push Notifications service instance.
          * Developers should put their user ID as the first argument.
          */
-        push.registerDeviceWithUserId(null, new MFPPushResponseListener<String>() {
+        push.registerDeviceWithUserId("YOUR_USER_ID", new MFPPushResponseListener<String>() {
 
             @Override
             public void onSuccess(String response) {
@@ -121,12 +136,13 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
     }
 
-    //NAVIGATION BAR--------------->DONT TOUCH IT!!!!!!
-    private void setDrawer() {
+    private void navigationBar() {
         Toolbar toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawerLayout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -135,32 +151,30 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.nav_contact:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Conact_Us_Fragment()).commit();
-                break;
-
-                case R.id.nav_we:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new We_Fragment()).commit();
-                break;
-            case R.id.nav_share:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
-                break;
-        }
-        return true;
-    }
-
-    @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
-        }else {
+        } else{
             super.onBackPressed();
         }
     }
 
-    //END OF NAVIGATION BAR!!!
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.nav_search:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Conact_Us_Fragment()).commit();
+                break;
+                
+            case R.id.nav_share:
+                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
     private void setPointer() {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -218,4 +232,48 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         }
     }
 
+<<<<<<<<< Temporary merge branch 1
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+=========
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+>>>>>>>>> Temporary merge branch 2
 }
