@@ -98,6 +98,25 @@
                 android:layout_toLeftOf="@+id/btnPause"
                 android:background="@drawable/ic_skipre" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:layout_above="@+id/seekBar"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/startTime"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="99:99"
+                android:layout_alignParentRight="true"
+                android:layout_above="@+id/seekBar"
+                android:layout_margin="@dimen/_10sdp"
+                android:id="@+id/endTime"
+                android:textColor="#ffffff"/>
+
         </RelativeLayout>
 
     </LinearLayout>

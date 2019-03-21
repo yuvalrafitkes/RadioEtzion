@@ -66,9 +66,11 @@ public class PlayerActivity extends AppCompatActivity {
             mediaPlayer.release();
         }
         Intent i = getIntent();
-        Bundle bundle = i.getExtras();
+        //Bundle bundle = i.getExtras();
 
-        MyProg = bundle.getParcelableArrayList("programs");
+        //MyProg = bundle.getParcelableArrayList("programs");
+
+        String url = i.getStringExtra("url");
 
 
         btnPause.setOnClickListener(new View.OnClickListener() {
