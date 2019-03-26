@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/drawerLayout2">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolBar"
@@ -15,6 +16,13 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Radio Etzion"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_18ssp"/>
 
     </android.support.v7.widget.Toolbar>
 
@@ -31,7 +39,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/weTxt"
-        android:text="בתי ספר לילדים עם לקויות למידה מיועדים לתלמידים מכיתה ג' ועד יב' (יסודי ועל יסודי), אשר עברו ועדת השמה לבתי ספר לחינוך מיוחד והופנו על ידי ועדת השמה ושיבוץ ברשויות השונות ללמוד בבתי ספר לילדים עם לקויות למידה.כיתות בנות 10-12 תלמידים, מחנך/ת ועוזר/ת הוראה.
+        android:text="בתי ספר לילדים עם לקויות למידה מיועדים לתלמידים מכיתה ג' ועד יב',  אשר עברו ועדת השמה לבתי ספר לחינוך מיוחד והופנו על ידי ועדת השמה ושיבוץ ברשויות השונות
+         ללמוד בבתי ספר לילדים עם לקויות למידה.כיתות בנות 10-12 תלמידים, מחנך/ת ועוזר/ת הוראה.
 בבתי הספר שלנו צוות רב מקצועי וצוות פארא רפואי נרחב - תראפיסטים/יות בתנועה, אומנות, דרמה ומוסיקה.
 תכנית תמיכה אישית לכל תלמיד, בתחום הלימודי, הרגשי והחברתי, תוך שיתוף התלמיד והוריו.
 הגשה לבחינות הבגרות במקצועות החובה ובמגמות לימוד ייחודיות כגון: מוסיקה, טכנולוגיה, תולדות האומנות.
@@ -41,5 +50,12 @@
 האהבה והשיח בגובה העיניים והאמונה ביכולות של התלמיד, יוצרים אווירה ייחודית בה כל תלמיד יכול להשמיע ולהשפיע על חיי הקהילה הבית ספרית.
 
 בית ספר ללקויי למידה הנו בית ספר לחינוך מיוחד, מוכרים ושאינם רשמיים הפועלים ברשיון ובפיקוח משרד החינוך." />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:src="@drawable/fun" />
+
 
 </LinearLayout>

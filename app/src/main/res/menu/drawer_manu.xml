@@ -4,11 +4,10 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_mail"
-            android:icon="@drawable/ic_email"
-            android:title="Email" />
 
+        <item android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home Screen"/>
         <item
             android:id="@+id/nav_mic"
             android:icon="@drawable/ic_mic_black_24dp"
@@ -23,24 +22,25 @@
             android:id="@+id/nav_we"
             android:icon="@drawable/ic_group"
             android:title="Who are We?" />
-
-        <item
-            android:id="@+id/nav_exit"
-            android:icon="@drawable/ic_exit"
-            android:title="Exit" />
     </group>
 
     <item android:title="Commuicate">
         <menu>
             <item
+                android:id="@+id/nav_mail"
+                android:icon="@drawable/ic_email"
+                android:title="Email" />
+
+            <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_share"
                 android:title="Share" />
 
+
             <item
-                android:id="@+id/nav_location"
-                android:icon="@drawable/ic_my_location"
-                android:title="Location" />
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_exit"
+                android:title="Exit the App" />
         </menu>
     </item>
 
