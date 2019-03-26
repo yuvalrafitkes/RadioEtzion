@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context=".PlayerActivity"
-    android:background="@drawable/player_background">
+    tools:context=".PlayerActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#9754cb"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,13 +24,13 @@
             android:src="@drawable/sound" />
 
         <TextView
+            android:id="@+id/txtProgram"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:scrollHorizontally="true"
-            android:id="@+id/txtProgram"
 
             android:singleLine="true"
             android:text="PROGRAM NAME"
@@ -68,48 +59,107 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="@dimen/_40sdp" />
 
-            <Button
+            <ImageButton
+                android:id="@+id/btnPlay"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/ic_play"
+                android:cropToPadding="false"
+                android:visibility="visible" />
+
+            <ImageButton
                 android:id="@+id/btnPause"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:background="@drawable/ic_pause" />
+                android:background="@drawable/ic_pause"
+                android:cropToPadding="false"
+                android:visibility="invisible" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnNext"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_toRightOf="@+id/btnPause"
+                android:layout_toRightOf="@+id/btnPlay"
                 android:background="@drawable/ic_skip" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnPre"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_toLeftOf="@+id/btnPause"
+                android:layout_toLeftOf="@+id/btnPlay"
                 android:background="@drawable/ic_skipre" />
 
             <TextView
+                android:id="@+id/startTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="00:00"
                 android:layout_above="@+id/seekBar"
                 android:layout_margin="@dimen/_10sdp"
-                android:id="@+id/startTime"
-                android:textColor="#ffffff"/>
+                android:text="00:00"
+                android:textColor="#000000" />
 
             <TextView
+                android:id="@+id/endTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="99:99"
-                android:layout_alignParentRight="true"
                 android:layout_above="@+id/seekBar"
+                android:layout_alignParentRight="true"
                 android:layout_margin="@dimen/_10sdp"
-                android:id="@+id/endTime"
-                android:textColor="#ffffff"/>
+                android:text="99:99"
+                android:textColor="#000000" />
+
+            <ImageButton
+                android:id="@+id/btnStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnPause"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:background="#00FFFFFF"
+                android:src="@drawable/stop"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/btnFavorits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnPause"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_60sdp"
+                android:layout_toRightOf="@+id/btnStop"
+                android:background="#00FFFFFF"
+                android:visibility="visible"
+                app:srcCompat="@android:drawable/btn_star_big_off" />
+
+            <ImageButton
+                android:id="@+id/btnFavoritsOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnPause"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_marginLeft="@dimen/_60sdp"
+                android:layout_toRightOf="@+id/btnStop"
+                android:background="#00FFFFFF"
+                android:visibility="invisible"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnPause"
+                android:layout_marginTop="@dimen/_43sdp"
+                android:layout_marginRight="@dimen/_60sdp"
+                android:layout_toLeftOf="@+id/btnStop"
+                android:background="#00FFFFFF"
+                android:src="@drawable/ic_share" />
 
         </RelativeLayout>
 

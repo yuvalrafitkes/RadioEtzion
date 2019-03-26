@@ -1,5 +1,7 @@
 package com.ibm.mysampleapp;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -40,7 +43,7 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 
-public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener ,
+public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
     private MFPPush push;
     private MFPPushNotificationListener notificationListener;
@@ -163,13 +166,42 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+            case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Tab()).commit();
+                break;
             case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Conact_Us_Fragment()).commit();
                 break;
 
             case R.id.nav_share:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String shareBody = "Radio etzion";
+                String shareSub = "RADIO ETZION";
+                intent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+                intent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                startActivity(Intent.createChooser(intent,"SHARE ME"));
                 break;
+            case R.id.nav_we:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new We_Fragment()).commit();
+
+            case R.id.nav_exit:
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Are you sure you want to exit and miss all the fun?");
+                builder.setCancelable(true);
+                builder.setNegativeButton("Stay!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.setPositiveButton("Take me out!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
