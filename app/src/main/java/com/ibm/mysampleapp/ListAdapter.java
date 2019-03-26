@@ -2,6 +2,7 @@ package com.ibm.mysampleapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -38,20 +39,46 @@ public class ListAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
+//        final ClsRadio current = radioList.get(position);
+//        TextView txt = new TextView(context);
+//        txt.setText(current.vodName);
+//
+//        txt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(context, PlayerActivity.class);
+//                i.putExtra("url", current.getFilePath());
+//                context.startActivity(i);
+//            }
+//        });
+//
+//        return txt;
+
+        View view = LayoutInflater.from(context).inflate(R.layout.list_item,null);
+        //set names
+        TextView txtShowName = view.findViewById(R.id.itemShow_Name);
+        txtShowName.setText(radioList.get(position).vodName);
+        //TODO = לקבל שמות שדרנים במידה ויעלו בכלל
+//            TextView txtShowReporter = view.findViewById(R.id.itemShow_Reporter);
+//        txtShowReporter.setText(radioList.get(position).);
+
+
+
         final ClsRadio current = radioList.get(position);
         TextView txt = new TextView(context);
         txt.setText(current.vodName);
 
-        txt.setOnClickListener(new View.OnClickListener() {
+
+        txtShowName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, PlayerActivity.class);
-                i.putExtra("url", current.getFilePath());
+                i.putExtra("url", radioList.get(position).getFilePath());
                 context.startActivity(i);
             }
         });
 
-        return txt;
+        return view;
     }
 }
