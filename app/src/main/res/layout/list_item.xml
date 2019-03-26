@@ -2,7 +2,7 @@
     android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="@dimen/_15sdp"
-    android:background="#9754cb"
+    android:background="#00FFFFFF"
     android:id="@+id/itemLinearBtn">
 
     <!-- moved from left to right due to hebrew writing-->
