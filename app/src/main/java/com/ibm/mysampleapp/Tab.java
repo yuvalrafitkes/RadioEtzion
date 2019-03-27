@@ -154,7 +154,7 @@ public class Tab extends Fragment {
             HttpURLConnection connection = null;
 
             try {
-                //conetion
+                //connection
                 connection = (HttpURLConnection) new URL("http://be.repoai.com:5080/WebRTCAppEE/rest/broadcast/getVodList/0/100?fbclid=IwAR3T5numCWbEGoiDcbAbd9zlqUepMifjMOx-W3m5DpEIjXCMRR8u3lTFpFI").openConnection();
 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -183,7 +183,7 @@ public class Tab extends Fragment {
 
         @Override
         protected void onPostExecute(String jsonString) {
-            if(jsonString != null){
+                if(jsonString != null){
                 try {
                     JSONArray jsonArray = new JSONArray(jsonString);
 

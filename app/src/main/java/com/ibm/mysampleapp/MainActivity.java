@@ -222,10 +222,11 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         Backendless.setUrl("https://api.backendless.com");
         //init the backendless by APP ID, API KEY
         Backendless.initApp( context, "2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00" );
+
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("תוכניות"));
         tabLayout.addTab(tabLayout.newTab().setText("מועדפים"));
-        tabLayout.addTab(tabLayout.newTab().setText("עדכונים"));
+        tabLayout.addTab(tabLayout.newTab().setText("LIVE"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
 
@@ -234,7 +235,6 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         Backendless.Messaging.registerDevice(channels, new AsyncCallback<DeviceRegistrationResult>() { // registration of device to push notifications
             @Override
             public void handleResponse(DeviceRegistrationResult response) {
-                //TODO - remove after checking if it works perfectly
                 Toast.makeText( context, "Device registered!",
                         Toast.LENGTH_LONG).show();
             }
