@@ -5,10 +5,17 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +27,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -154,7 +163,7 @@ public class Tab extends Fragment {
             HttpURLConnection connection = null;
 
             try {
-                //conetion
+                //connection
                 connection = (HttpURLConnection) new URL("http://be.repoai.com:5080/WebRTCAppEE/rest/broadcast/getVodList/0/100?fbclid=IwAR3T5numCWbEGoiDcbAbd9zlqUepMifjMOx-W3m5DpEIjXCMRR8u3lTFpFI").openConnection();
 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -183,17 +192,39 @@ public class Tab extends Fragment {
 
         @Override
         protected void onPostExecute(String jsonString) {
-            if(jsonString != null){
+                if(jsonString != null){
                 try {
                     JSONArray jsonArray = new JSONArray(jsonString);
 
                     radioList.clear();
-                    for(int i=0; i<jsonArray.length(); i+=1){
+                        for(int i=0; i<jsonArray.length(); i+=1){
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         ClsRadio radio = new ClsRadio(jsonObject.getString("vodName"), jsonObject.getString("filePath"));
                         radioList.add(radio);
-                    }
+                            broadcasts newBroadcast = new broadcasts();
+                            newBroadcast.setStreamName(jsonObject.getString("streamName"));
+                            newBroadcast.setVodName(jsonObject.getString("vodName"));
+                            newBroadcast.setStreamId(jsonObject.getString("streamId"));
+                           // newBroadcast.setCreationDate(jsonObject.getInt("creationDate"));
+                            newBroadcast.setDuration(jsonObject.getInt("duration"));
+                            newBroadcast.setFileSize(jsonObject.getInt("fileSize"));
+                            newBroadcast.setFilePath(jsonObject.getString("filePath"));
+                            newBroadcast.setVodId(jsonObject.getString("vodId"));
+                            newBroadcast.setType(jsonObject.getString("type"));
 
+                            Backendless.Data.of(broadcasts.class).save(newBroadcast, new AsyncCallback<broadcasts>() {
+                                @Override
+                                public void handleResponse(broadcasts response) {
+                                    Toast.makeText(context, "all data saved", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void handleFault(BackendlessFault fault) {
+                                    Log.e("BE HandleFault", fault.getDetail());
+                                    Toast.makeText(context, fault.getDetail(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
                     adapter.notifyDataSetChanged();
 
 
