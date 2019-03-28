@@ -13,8 +13,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.backendless.Backendless;
+import com.backendless.BackendlessUser;
 import com.backendless.async.callback.AsyncCallback;
 import com.backendless.exceptions.BackendlessFault;
+import com.backendless.push.DeviceRegistrationResult;
+import com.google.firebase.FirebaseApp;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +29,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static com.backendless.rt.RTTypes.log;
 
 
 /**
@@ -98,7 +105,7 @@ public class Tab extends Fragment {
 
     private void setPointer() {
         context = getActivity();
-
+        FirebaseApp.initializeApp(context);
         listView = rootView.findViewById(R.id.list);
         radioList = new ArrayList<>();
         adapter = new ListAdapter(context, radioList);
@@ -189,9 +196,25 @@ public class Tab extends Fragment {
 
         @Override
         protected void onPostExecute(String jsonString) {
+
                 if(jsonString != null){
                 try {
                     JSONArray jsonArray = new JSONArray(jsonString);
+
+                    Backendless.initApp(context,"2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00");
+
+                    Backendless.Messaging.registerDevice(new AsyncCallback<DeviceRegistrationResult>() { // launching the push notification we created via backendless and firebase
+                                @Override
+                                public void handleResponse(DeviceRegistrationResult response) {
+                                    Toast.makeText(context, "registered to push", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void handleFault(BackendlessFault fault) {
+                                    Log.e("err", "handleFault: " + fault.getDetail());
+
+                                }
+                            });
 
                     radioList.clear();
                         for(int i=0; i<jsonArray.length(); i+=1){
@@ -202,7 +225,7 @@ public class Tab extends Fragment {
                             newBroadcast.setStreamName(jsonObject.getString("streamName"));
                             newBroadcast.setVodName(jsonObject.getString("vodName"));
                             newBroadcast.setStreamId(jsonObject.getString("streamId"));
-                           // newBroadcast.setCreationDate(jsonObject.getInt("creationDate"));
+                            newBroadcast.setCreationDate(jsonObject.getInt("creationDate"));
                             newBroadcast.setDuration(jsonObject.getInt("duration"));
                             newBroadcast.setFileSize(jsonObject.getInt("fileSize"));
                             newBroadcast.setFilePath(jsonObject.getString("filePath"));
@@ -217,8 +240,7 @@ public class Tab extends Fragment {
 
                                 @Override
                                 public void handleFault(BackendlessFault fault) {
-                                    Log.e("BE HandleFault", fault.getDetail());
-                                    Toast.makeText(context, fault.getDetail(), Toast.LENGTH_SHORT).show();
+                                    Log.e("err","handleFault: "+fault.getDetail());
                                 }
                             });
                         }
