@@ -2,6 +2,7 @@ package com.ibm.mysampleapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class ListAdapter extends BaseAdapter{
         //set names
         TextView txtShowName = view.findViewById(R.id.itemShow_Name);
         txtShowName.setText(radioList.get(position).vodName);
+        ;
         //TODO = לקבל שמות שדרנים במידה ויעלו בכלל
 //            TextView txtShowReporter = view.findViewById(R.id.itemShow_Reporter);
 //        txtShowReporter.setText(radioList.get(position).);
@@ -59,7 +61,14 @@ public class ListAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, PlayerActivity.class);
-                i.putExtra("url", radioList.get(position).getFilePath());
+                //URL
+                String sendPath="http://be.repoai.com:5080/WebRTCAppEE/"+radioList.get(position).getFilePath();
+                String sendName=radioList.get(position).getVodName();
+                sendName = sendName.replace("_"," ");
+                sendName = sendName.replace(".mp4","");
+                Log.e("fileName", "onClick: "+sendPath);
+                i.putExtra("url",sendPath);
+                i.putExtra("urlName",sendName);
                 context.startActivity(i);
             }
         });

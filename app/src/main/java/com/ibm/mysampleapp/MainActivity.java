@@ -1,6 +1,5 @@
 package com.ibm.mysampleapp;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -24,11 +23,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.backendless.Backendless;
-import com.backendless.async.callback.AsyncCallback;
-import com.backendless.exceptions.BackendlessFault;
-import com.backendless.push.DeviceRegistrationResult;
-import com.google.firebase.FirebaseApp;
 import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush;
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushException;
@@ -45,8 +39,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -56,15 +48,15 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     private MFPPush push;
     private MFPPushNotificationListener notificationListener;
     TabLayout tabLayout;
-    Context context;
+
     private DrawerLayout drawerLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_main);
+
         setPointer();
         navigationBar();
 
@@ -217,35 +209,11 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     }
 
     private void setPointer() {
-        this.context=this;
-        //set url (backendless url)
-        Backendless.setUrl("https://api.backendless.com");
-        //init the backendless by APP ID, API KEY
-        Backendless.initApp( context, "2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00" );
-
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("תוכניות"));
         tabLayout.addTab(tabLayout.newTab().setText("מועדפים"));
-        tabLayout.addTab(tabLayout.newTab().setText("LIVE"));
+        tabLayout.addTab(tabLayout.newTab().setText("עדכונים"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-
-        List<String> channels = new ArrayList<>(); // all channels for sending push notifications
-        channels.add( "default" ); // default channel
-        Backendless.Messaging.registerDevice(channels, new AsyncCallback<DeviceRegistrationResult>() { // registration of device to push notifications
-            @Override
-            public void handleResponse(DeviceRegistrationResult response) {
-                Toast.makeText( context, "Device registered!",
-                        Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void handleFault(BackendlessFault fault) {
-                //TODO - remove after checking if it works perfectly
-                Toast.makeText( context, "Error registering " + fault.getMessage(),
-                        Toast.LENGTH_LONG).show();
-            }
-        });
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         PagerAdapter adapter = new com.ibm.mysampleapp.PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
