@@ -9,22 +9,24 @@
 
     <ImageView
         android:id="@+id/itemShow_Pic"
-        android:layout_width="@dimen/_60sdp"
-        android:layout_height="@dimen/_60sdp"
-        android:layout_centerVertical="true"
+        android:layout_width="68dp"
+        android:layout_height="61dp"
         android:layout_alignParentEnd="true"
-        android:src="@mipmap/ic_launcher"
-        />
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="7dp"
+        android:src="@drawable/sound" />
+
     <TextView
+        android:id="@+id/itemShow_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="show name"
-        android:padding="@dimen/_10sdp"
         android:layout_centerVertical="true"
+        android:layout_marginRight="-1dp"
         android:layout_toLeftOf="@id/itemShow_Pic"
-        android:textSize="@dimen/_12sdp"
+        android:padding="@dimen/_10sdp"
+        android:text="show name"
         android:textColor="#382727"
-        android:id="@+id/itemShow_Name"/>
+        android:textSize="@dimen/_12sdp" />
 
     <ImageButton
         android:id="@+id/imageButton2"
