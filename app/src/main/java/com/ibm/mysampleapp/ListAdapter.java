@@ -42,9 +42,10 @@ public class ListAdapter extends BaseAdapter{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view = LayoutInflater.from(context).inflate(R.layout.list_item,null);
+        String showName = radioList.get(position).vodName;
         //set names
         TextView txtShowName = view.findViewById(R.id.itemShow_Name);
-        txtShowName.setText(radioList.get(position).vodName);
+        txtShowName.setText(initializeText(showName));
         ;
         //TODO = לקבל שמות שדרנים במידה ויעלו בכלל
 //            TextView txtShowReporter = view.findViewById(R.id.itemShow_Reporter);
@@ -64,15 +65,20 @@ public class ListAdapter extends BaseAdapter{
                 //URL
                 String sendPath="http://be.repoai.com:5080/WebRTCAppEE/"+radioList.get(position).getFilePath();
                 String sendName=radioList.get(position).getVodName();
-                sendName = sendName.replace("_"," ");
-                sendName = sendName.replace(".mp4","");
+                initializeText(sendName);
                 Log.e("fileName", "onClick: "+sendPath);
                 i.putExtra("url",sendPath);
-                i.putExtra("urlName",sendName);
+                i.putExtra("urlName",initializeText(sendName));
                 context.startActivity(i);
             }
         });
 
         return view;
+    }
+
+    public String initializeText (String txt){ // initializes the file's text to normal spaced string
+        txt = txt.replace("_"," ");
+        txt = txt.replace(".mp4","");
+        return txt;
     }
 }
