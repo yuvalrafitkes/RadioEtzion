@@ -140,6 +140,5 @@ public class PlayerActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         mediaPlayer.stop();
-        finish();
     }
 }

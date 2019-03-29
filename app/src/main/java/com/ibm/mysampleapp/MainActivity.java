@@ -45,10 +45,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
-    private MFPPush push;
-    private MFPPushNotificationListener notificationListener;
     TabLayout tabLayout;
-
     private DrawerLayout drawerLayout;
 
 
@@ -59,85 +56,8 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
         setPointer();
         navigationBar();
-
-
-        // Core SDK must be initialized to interact with Bluemix Mobile services.
-        BMSClient.getInstance().initialize(getApplicationContext(), BMSClient.REGION_US_SOUTH);
-
-
-
-        /*
-         * Initialize the Push Notifications client SDK with the App Guid and Client Secret from your Push Notifications service instance on Bluemix.
-         * This enables authenticated interactions with your Push Notifications service instance.
-         */
-        push = MFPPush.getInstance();
-        push.initialize(getApplicationContext(), getString(R.string.pushAppGuid), getString(R.string.pushClientSecret));
-
-        /*
-         * Attempt to register your Android device with your Bluemix Push Notifications service instance.
-         * Developers should put their user ID as the first argument.
-         */
-        push.registerDeviceWithUserId("YOUR_USER_ID", new MFPPushResponseListener<String>() {
-
-            @Override
-            public void onSuccess(String response) {
-
-                // Split response and convert to JSON object to display User ID confirmation from the backend.
-                String[] resp = response.split("Text: ");
-                String userId = "";
-                try {
-                    org.json.JSONObject responseJSON = new org.json.JSONObject(resp[1]);
-                    userId = responseJSON.getString("userId");
-                } catch (org.json.JSONException e) {
-                    e.printStackTrace();
-                }
-
-                android.util.Log.i("YOUR_TAG_HERE", "Successfully registered for Bluemix Push Notifications with USER ID: " + userId);
-            }
-
-            @Override
-            public void onFailure(MFPPushException ex) {
-
-                String errLog = "Error registering for Bluemix Push Notifications: ";
-                String errMessage = ex.getErrorMessage();
-                int statusCode = ex.getStatusCode();
-
-                // Create an error log based on the response code and returned error message.
-                if (statusCode == 401) {
-                    errLog += "Cannot authenticate successfully with Bluemix Push Notifications service instance. Ensure your CLIENT SECRET is correct.";
-                } else if (statusCode == 404 && errMessage.contains("Push GCM Configuration")) {
-                    errLog += "Your Bluemix Push Notifications service instance's GCM/FCM Configuration does not exist.\n" +
-                            "Ensure you have configured GCM/FCM Push credentials on your Bluemix Push Notifications dashboard correctly.";
-                } else if (statusCode == 404) {
-                    errLog += "Cannot find Bluemix Push Notifications service instance, ensure your APP GUID is correct.";
-                } else if (statusCode >= 500) {
-                    errLog += "Bluemix and/or the Bluemix Push Notifications service are having problems. Please try again later.";
-                } else if (statusCode == 0) {
-                    errLog += "Request to Bluemix Push Notifications service instance timed out. Ensure your device is connected to the Internet.";
-                }
-
-                android.util.Log.e("YOUR_TAG_HERE", errLog);
-            }
-        });
-
-        // A notification listener is needed to handle any incoming push notifications within the Android application.
-        notificationListener = new MFPPushNotificationListener() {
-
-            @Override
-            public void onReceive(final MFPSimplePushNotification message) {
-                // TODO: Process the message and add your logic here.
-                android.util.Log.i("YOUR_TAG_HERE", "Received a push notification: " + message.toString());
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        android.app.DialogFragment fragment = PushReceiverFragment.newInstance("Push notification received", message.getAlert());
-                        fragment.show(getFragmentManager(), "dialog");
-                    }
-                });
-            }
-        };
-
-
     }
+
 
     private void navigationBar() {
         Toolbar toolbar = findViewById(R.id.toolBar);
@@ -167,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
         switch (item.getItemId()) {
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Tab()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Tab()).commit();
                 break;
             case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Conact_Us_Fragment()).commit();
@@ -178,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
                 intent.setType("text/plain");
                 String shareBody = "Radio etzion";
                 String shareSub = "RADIO ETZION";
-                intent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
-                intent.putExtra(Intent.EXTRA_TEXT,shareBody);
-                startActivity(Intent.createChooser(intent,"SHARE ME"));
+                intent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+                intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(intent, "SHARE ME"));
                 break;
             case R.id.nav_we:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new We_Fragment()).commit();
@@ -243,23 +163,6 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // Enable the Push Notifications client SDK to listen for push notifications using the predefined notification listener.
-        if (push != null) {
-            push.listen(notificationListener);
-        }
-
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (push != null) {
-            push.hold();
-        }
-    }
 }
+
+
