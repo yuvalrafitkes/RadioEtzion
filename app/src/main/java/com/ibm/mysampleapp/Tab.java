@@ -175,7 +175,7 @@ public class Tab extends Fragment {
                 StringBuilder sb = new StringBuilder();
                 String line;
 
-                while((line = reader.readLine()) != null){
+                while ((line = reader.readLine()) != null) {
                     sb.append(line);
                 }
 
@@ -184,9 +184,8 @@ public class Tab extends Fragment {
                 return sb.toString();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-            finally {
-                if(connection != null){
+            } finally {
+                if (connection != null) {
                     connection.disconnect();
                 }
             }
@@ -197,61 +196,64 @@ public class Tab extends Fragment {
         @Override
         protected void onPostExecute(String jsonString) {
 
-                if(jsonString != null){
+            if (jsonString != null) {
                 try {
                     JSONArray jsonArray = new JSONArray(jsonString);
 
-                    Backendless.initApp(context,"2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00");
+                    Backendless.initApp(context, "2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00");
 
                     Backendless.Messaging.registerDevice(new AsyncCallback<DeviceRegistrationResult>() { // launching the push notification we created via backendless and firebase
-                                @Override
-                                public void handleResponse(DeviceRegistrationResult response) {
-                                    Toast.makeText(context, "registered to push", Toast.LENGTH_SHORT).show();
-                                }
+                        @Override
+                        public void handleResponse(DeviceRegistrationResult response) {
+                            //Toast.makeText(context, "registered to push", Toast.LENGTH_SHORT).show();
+                        }
 
-                                @Override
-                                public void handleFault(BackendlessFault fault) {
-                                    Log.e("err", "handleFault: " + fault.getDetail());
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+                           Log.e("err", "handleFault: " + fault.getDetail());
 
-                                }
-                            });
+                        }
+                    });
 
                     radioList.clear();
-                        for(int i=0; i<jsonArray.length(); i+=1){
+                    for (int i = 0; i < jsonArray.length(); i += 1) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         ClsRadio radio = new ClsRadio(jsonObject.getString("vodName"), jsonObject.getString("filePath"));
                         radioList.add(radio);
-                            broadcasts newBroadcast = new broadcasts();
-                            newBroadcast.setStreamName(jsonObject.getString("streamName"));
-                            newBroadcast.setVodName(jsonObject.getString("vodName"));
-                            newBroadcast.setStreamId(jsonObject.getString("streamId"));
-                            newBroadcast.setCreationDate(jsonObject.getInt("creationDate"));
-                            newBroadcast.setDuration(jsonObject.getInt("duration"));
-                            newBroadcast.setFileSize(jsonObject.getInt("fileSize"));
-                            newBroadcast.setFilePath(jsonObject.getString("filePath"));
-                            newBroadcast.setVodId(jsonObject.getString("vodId"));
-                            newBroadcast.setType(jsonObject.getString("type"));
+                        broadcasts newBroadcast = new broadcasts();
+                        for (int j = 0; j < radioList.size(); j += 1) {
+                            if ((Backendless.Data.of(jsonObject.getString("filePath")).equals(radioList.get(j).filePath))) { // checks if broadcasts already exists according to the filePath
+                                newBroadcast.setVodId(jsonObject.getString("vodId"));
+                                newBroadcast.setStreamName(jsonObject.getString("streamName"));
+                                newBroadcast.setVodName(jsonObject.getString("vodName"));
+                                newBroadcast.setStreamId(jsonObject.getString("streamId"));
+                                newBroadcast.setCreationDate(jsonObject.getInt("creationDate"));
+                                newBroadcast.setDuration(jsonObject.getInt("duration"));
+                                newBroadcast.setFileSize(jsonObject.getInt("fileSize"));
+                                newBroadcast.setFilePath(jsonObject.getString("filePath"));
+                                newBroadcast.setType(jsonObject.getString("type"));
 
-                            Backendless.Data.of(broadcasts.class).save(newBroadcast, new AsyncCallback<broadcasts>() {
-                                @Override
-                                public void handleResponse(broadcasts response) {
-                                    Toast.makeText(context, "all data saved", Toast.LENGTH_SHORT).show();
-                                }
+                                Backendless.Data.of(broadcasts.class).save(newBroadcast, new AsyncCallback<broadcasts>() {
+                                    @Override
+                                    public void handleResponse(broadcasts response) {
+                                        Toast.makeText(context, "all data saved", Toast.LENGTH_SHORT).show();
+                                    }
 
-                                @Override
-                                public void handleFault(BackendlessFault fault) {
-                                    Log.e("err","handleFault: "+fault.getDetail());
-                                }
-                            });
+                                    @Override
+                                    public void handleFault(BackendlessFault fault) {
+                                        Log.e("err", "handleFault: " + fault.getDetail());
+                                    }
+                                });
+                            }
                         }
-                    adapter.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
+                    }
 
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    } catch(JSONException e){
+                        e.printStackTrace();
+                    }
                 }
             }
         }
-    }
 
-}
+    }
