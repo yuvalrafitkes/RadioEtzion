@@ -59,11 +59,6 @@ public class PlayerActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.seekBar);
 
 
-        //Bundle bundle = i.getExtras();
-
-        //MyProg = bundle.getParcelableArrayList("programs");
-
-
         String url = "http://be.repoai.com:5080/WebRTCAppEE/streams/home/עציון_בית_אקשטיין_לומדים_אחרת.mp4"; // your URL here
         final MediaPlayer mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -140,5 +135,6 @@ public class PlayerActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         mediaPlayer.stop();
+        finish();
     }
 }
