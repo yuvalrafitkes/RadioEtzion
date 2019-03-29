@@ -53,4 +53,10 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_manu" />
+
+    <ProgressBar
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:id="@+id/progressBar"
+        android:visibility="invisible"/>
 </android.support.v4.widget.DrawerLayout>

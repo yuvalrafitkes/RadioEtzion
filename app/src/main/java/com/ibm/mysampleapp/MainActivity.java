@@ -21,15 +21,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
-import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush;
-import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushException;
-import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushResponseListener;
-import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationListener;
-import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPSimplePushNotification;
+import com.crashlytics.android.Crashlytics;
 
+
+import io.fabric.sdk.android.Fabric;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
 
         setPointer();
