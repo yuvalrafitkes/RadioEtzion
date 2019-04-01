@@ -21,7 +21,7 @@ public class StartChatActivity extends AppCompatActivity {
     Backendless.setUrl(Defaults.SERVER_URL);
     Backendless.initApp(this, Defaults.APPLICATION_ID, Defaults.API_KEY);
 
-    setContentView(R.layout.activity_start_char);
+    setContentView(R.layout.activity_start_chat);
 
     userNameEditText = findViewById(R.id.userName);
 
