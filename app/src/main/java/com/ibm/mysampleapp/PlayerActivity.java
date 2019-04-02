@@ -197,6 +197,27 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
+//X10 MIN--NEXT BUTTON---------------------------------------------------
+        btnNext = findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                long currentTime =exoPlayer.getCurrentPosition();
+                currentTime +=600000;
+                exoPlayer.seekTo(currentTime);
+            }
+        });
+//X10 MIN--BACK BUTTON------------------------------------------------------
+
+        btnPre = findViewById(R.id.btnPre);
+        btnPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                long currentTime =exoPlayer.getCurrentPosition();
+                currentTime -=600000;
+                exoPlayer.seekTo(currentTime);
+            }
+        });
     }
 
     private void prepareExoPlayerFromURL(Uri parse) {
