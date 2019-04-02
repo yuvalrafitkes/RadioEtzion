@@ -58,6 +58,7 @@ public class Tab extends Fragment {
     private View rootView;
 
     private List<ClsRadio> radioList;
+    private List<ClsRadio> faveList;
     private ListAdapter adapter;
     private ListView listView;
 
@@ -97,7 +98,6 @@ public class Tab extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_tab, container, false);
         setPointer();
         return rootView;
@@ -149,6 +149,8 @@ public class Tab extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
@@ -215,13 +217,20 @@ public class Tab extends Fragment {
                         }
                     });
 
-                    radioList.clear();
+                    //radioList.clear();
                     for (int i = 0; i < jsonArray.length(); i += 1) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         ClsRadio radio = new ClsRadio(jsonObject.getString("vodName"), jsonObject.getString("filePath"));
                         radioList.add(radio);
                         broadcasts newBroadcast = new broadcasts();
                         for (int j = 0; j < radioList.size(); j += 1) {
+
+                            if(radioList.get(j).getIsFave() && !(faveList.contains(radioList.get(j))) && faveList.get(j) !=null){ // if the show is listed as favourite and is not already in the faveList, we add it
+                                faveList.add(radioList.get(j));
+                            }
+//                            if(!radioList.get(j).getIsFave() && (faveList.contains(radioList.get(j))) && faveList.get(j) !=null){ // if the show is not listed as favourite and is still in the faveList, we remove it
+//                                faveList.remove(radioList.get(j));
+//                            }
                             if ((Backendless.Data.of(jsonObject.getString("filePath")).equals(radioList.get(j).filePath))) { // checks if broadcasts already exists according to the filePath
                                 newBroadcast.setVodId(jsonObject.getString("vodId"));
                                 newBroadcast.setStreamName(jsonObject.getString("streamName"));
@@ -236,7 +245,7 @@ public class Tab extends Fragment {
                                 Backendless.Data.of(broadcasts.class).save(newBroadcast, new AsyncCallback<broadcasts>() {
                                     @Override
                                     public void handleResponse(broadcasts response) {
-                                        Toast.makeText(context, "all data saved", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(context, "all data saved", Toast.LENGTH_SHORT).show();
                                     }
 
                                     @Override

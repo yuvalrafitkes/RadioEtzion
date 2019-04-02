@@ -2,11 +2,32 @@ package com.ibm.mysampleapp;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.push.DeviceRegistrationResult;
+import com.google.firebase.FirebaseApp;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -26,6 +47,13 @@ public class Tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Context context;
+    private View rootView;
+
+    private List<ClsRadio> faveList;
+    private Tab1ListAdapter adapter;
+    private ListView listView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -63,9 +91,88 @@ public class Tab1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+        rootView =  inflater.inflate(R.layout.fragment_tab1, container, false);
+        setPointer();
+        return rootView;
     }
+
+    private void setPointer() {
+        context = getActivity();
+        listView = rootView.findViewById(R.id.list);
+        faveList = new ArrayList<>();
+        adapter = new Tab1ListAdapter(context,faveList);
+        listView.setAdapter(adapter);
+
+        new Tab1.DataTask().execute();
+
+    }
+
+    private class DataTask extends AsyncTask<Void, Void, String> {
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+//        @Override
+       protected String doInBackground(Void... voids) {
+////
+////            HttpURLConnection connection = null;
+////
+////            try {
+////                //connection
+////                connection = (HttpURLConnection) new URL("http://be.repoai.com:5080/WebRTCAppEE/rest/broadcast/getVodList/0/100?fbclid=IwAR3T5numCWbEGoiDcbAbd9zlqUepMifjMOx-W3m5DpEIjXCMRR8u3lTFpFI").openConnection();
+////
+////                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+////                ////insert to string
+////                StringBuilder sb = new StringBuilder();
+////                String line;
+////
+////                while ((line = reader.readLine()) != null) {
+////                    sb.append(line);
+////                }
+//
+////                reader.close();
+//
+////                return sb.toString();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } finally {
+//                if (connection != null) {
+//                    connection.disconnect();
+//                }
+//            }
+//
+           return null;
+        }
+
+        @Override
+        protected void onPostExecute(String jsonString) {
+
+//            if (jsonString != null) {
+//                try {
+//                    JSONArray jsonArray = new JSONArray(jsonString);
+
+                    //Backendless.initApp(context, "2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00");
+
+//                    Backendless.Messaging.registerDevice(new AsyncCallback<DeviceRegistrationResult>() { // launching the push notification we created via backendless and firebase
+//                        @Override
+//                        public void handleResponse(DeviceRegistrationResult response) {
+//                            //Toast.makeText(context, "registered to push", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                        @Override
+//                        public void handleFault(BackendlessFault fault) {
+//                            Log.e("err", "handleFault: " + fault.getDetail());
+//
+//                        }
+//                    });
+                        adapter.notifyDataSetChanged();
+                    }
+
+                }
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

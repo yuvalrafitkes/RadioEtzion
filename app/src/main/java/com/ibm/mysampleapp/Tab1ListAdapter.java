@@ -7,26 +7,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class ListAdapter extends BaseAdapter{
+public class Tab1ListAdapter extends BaseAdapter{
 
     private Context context;
-    private List<ClsRadio> radioList;
+    private List<ClsRadio> faveList;
 
 
-    public ListAdapter(Context context, List<ClsRadio> radioList) {
+    public Tab1ListAdapter(Context context, List<ClsRadio> faveList) {
         this.context = context;
-        this.radioList = radioList;
+        this.faveList = faveList;
     }
 
     @Override
     public int getCount() {
-        return radioList.size();
+        return faveList.size();
     }
 
     @Override
@@ -42,12 +40,12 @@ public class ListAdapter extends BaseAdapter{
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view = LayoutInflater.from(context).inflate(R.layout.list_item,null);
-        String showName = radioList.get(position).vodName;
+        String showName = faveList.get(position).vodName;
         //set names
         TextView txtShowName = view.findViewById(R.id.itemShow_Name);
         txtShowName.setText(initializeText(showName));
 
-        final ClsRadio current = radioList.get(position);
+        final ClsRadio current = faveList.get(position);
         TextView txt = new TextView(context);
         txt.setText(current.vodName);
 
@@ -57,13 +55,12 @@ public class ListAdapter extends BaseAdapter{
             public void onClick(View v) {
                 Intent i = new Intent(context, PlayerActivity.class);
                 //URL
-                String sendPath="http://be.repoai.com:5080/WebRTCAppEE/"+radioList.get(position).getFilePath();
-                String sendName=radioList.get(position).getVodName();
-                sendName = initializeText(sendName);
+                String sendPath="http://be.repoai.com:5080/WebRTCAppEE/"+faveList.get(position).getFilePath();
+                String sendName=faveList.get(position).getVodName();
+                initializeText(sendName);
                 Log.e("fileName", "onClick: "+sendPath);
                 i.putExtra("url",sendPath);
                 i.putExtra("urlName",initializeText(sendName));
-                i.putExtra("isFave",radioList.get(position).isFave);
                 context.startActivity(i);
             }
         });

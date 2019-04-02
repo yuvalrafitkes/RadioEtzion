@@ -7,24 +7,26 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 public class PlayerActivity extends AppCompatActivity {
-    ImageButton btnPlay, btnNext, btnPre, btnPause, btnFavorits, btnFavoritsOn, btnStop;
+    ImageButton btnPlay, btnNext, btnPre, btnPause, btnFavorites, btnFavoritesOn, btnStop;
     String progName;
     TextView txtProgram;
     SeekBar seekBar;
     Context context;
-    boolean isWorking;
+    boolean isFave;
     int length = 0;
     ListAdapter listAdapter;
     String soundPath;
@@ -37,6 +39,7 @@ public class PlayerActivity extends AppCompatActivity {
     ArrayList MyProg;
     Thread updateSeekBar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,7 @@ public class PlayerActivity extends AppCompatActivity {
         Intent intent = getIntent();
         soundPath = intent.getStringExtra("url");
         namePath = intent.getStringExtra("urlName");
+        isFave = intent.getBooleanExtra("isFave",isFave); /// ???
         setPointer();
     }
 
@@ -54,7 +58,8 @@ public class PlayerActivity extends AppCompatActivity {
         btnPre = findViewById(R.id.btnPre);
         btnPause = findViewById(R.id.btnPause);
         btnStop = findViewById(R.id.btnStop);
-
+        btnFavorites = findViewById(R.id.btnFavorites);
+        btnFavoritesOn = findViewById(R.id.btnFavoritesOn);
         txtProgram = findViewById(R.id.txtProgram);
         seekBar = findViewById(R.id.seekBar);
 
@@ -71,6 +76,7 @@ public class PlayerActivity extends AppCompatActivity {
         }
         try {
             mediaPlayer.prepare(); // might take long! (for buffering, etc)
+            Log.e("prepare request","done preparing");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,6 +112,29 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
+        btnFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    btnFavorites.setVisibility(View.INVISIBLE);
+                    btnFavoritesOn.setVisibility(View.VISIBLE);
+                    isFave = !isFave;
+                    // added to favourites
+                Toast.makeText(context, "התוכנית נוספה למועדפים", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnFavoritesOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    btnFavoritesOn.setVisibility(View.INVISIBLE);
+                    btnFavorites.setVisibility(View.VISIBLE);
+                isFave = !isFave;
+                // removed from favourites
+                Toast.makeText(context, "התוכנית הוסרה מהמועדפים", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -127,14 +156,12 @@ public class PlayerActivity extends AppCompatActivity {
 
             }
         });
-
     }
-
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         mediaPlayer.stop();
-        finish();
+       finish();
     }
 }
