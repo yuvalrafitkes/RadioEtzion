@@ -1,12 +1,14 @@
 package com.ibm.mysampleapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -104,9 +106,10 @@ public class PlayerActivity extends AppCompatActivity {
 
     Handler handler;
     SeekBar seekBar;
-    ImageButton btnPlay, btnPause, btnStop, btnNext, btnPre,btnShare;
+    ImageButton btnPlay, btnPause, btnStop, btnNext, btnPre, btnShare, btnInfo,
+            btnFavorite, btnFavoriteOn;
     TextView txtStartTime, txtEndTime, txtProgram;
-    boolean isPlaying = false;
+    boolean isPlaying = false,isFav = false;
     String soundPath;
     String namePath;
 
@@ -114,12 +117,14 @@ public class PlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_player);
         Intent intent = getIntent();
         txtProgram = findViewById(R.id.txtProgram);
         soundPath = intent.getStringExtra("url");
         namePath = intent.getStringExtra("urlName");
-
+        Toolbar toolbar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
         try {
             prepareExoPlayerFromURL(Uri.parse(soundPath));
             txtProgram.setText(namePath);
@@ -131,6 +136,8 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     private void setPointer() {
+
+        //SHARE BUTTON-----------------------------------------------------------------------
         btnShare = findViewById(R.id.btnShare);
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +151,52 @@ public class PlayerActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(intent, "SHARE ME"));
             }
         });
+//INFO DIALOG----------------------------------------------------------------------------------
+        btnInfo = findViewById(R.id.btnInfo);
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(PlayerActivity.this).create();
+                alertDialog.setTitle("Information ");
+                alertDialog.setMessage("\n" +
+                        "תכנית עם מרחב מוהר, סגן אלוף העולם באגרוף.\n" +
+                        "בגיל 22 עם התואר \"אלוף ישראל באגרוף\" וכרטיס בכיוון אחד לניו יורק יוצא מרחב מוהר לארה\"ב.\n" +
+                        "הוא משאיר מאחוריו הורים, חברים ומעריצים ומבקש להגשים את חלום חייו, להשיג את התואר אלוף העולם באגרוף.\n" +
+                        "אחרי אימונים מפרכים הוא פורץ לזירה עטוף בדגל ישראל, אבל הקרב הופך להיות נקודת מפנה בחייו האישיים והמקצועיים.\n" +
+                        "\n" +
+                        "מרחב חושף את הסיפור האישי שלו מעורר השראה בכל הנושאים הקשורים למוטיבציה, מצוינות, לספורט כדרך לניתוב כעסים.\n" +
+                        "\n" +
+                        "שדרים: אושר מוזס ואורי בן חנן");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+            }
+        });
+//FAVORITE BUTTON--------------------------------------------------------------------------------------------------
+
+        btnFavorite = findViewById(R.id.btnFavorits);
+        btnFavoriteOn = findViewById(R.id.btnFavoritsOn);
+
+        btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnFavorite.setVisibility(View.INVISIBLE);
+                btnFavoriteOn.setVisibility(View.VISIBLE);
+            }
+        });
+
+        btnFavoriteOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnFavorite.setVisibility(View.VISIBLE);
+                btnFavoriteOn.setVisibility(View.INVISIBLE);
+            }
+        });
+
     }
 
     private void prepareExoPlayerFromURL(Uri parse) {
@@ -166,30 +219,11 @@ public class PlayerActivity extends AppCompatActivity {
         initPlayButton();
         initSeekBar();
         initTxtTime();
-        onStopMusic();
-    }
-
-    private void onStopMusic() {
-        btnStop = findViewById(R.id.btnStop);
-        btnStop.requestFocus();
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopMusic(true);
-            }
-        });
-    }
-
-    private void stopMusic(boolean play) {
-        isPlaying = play;
-        exoPlayer.setPlayWhenReady(play);
-        int length = 0;
-        setProgress(length);
     }
 
     private void initTxtTime() {
         txtStartTime = findViewById(R.id.startTime);
-        txtEndTime = (TextView) findViewById(R.id.endTime);
+        txtEndTime = findViewById(R.id.endTime);
     }
 
     private void initSeekBar() {
@@ -277,7 +311,6 @@ public class PlayerActivity extends AppCompatActivity {
         seekBar.setMax((int) exoPlayer.getDuration() / 1000);
         txtStartTime.setText(stringForTime((int) exoPlayer.getCurrentPosition()));
         txtEndTime.setText(stringForTime((int) exoPlayer.getDuration()));
-
         if (handler == null) handler = new Handler();
         //Make sure you update Seekbar on UI thread
         handler.post(new Runnable() {
@@ -295,7 +328,13 @@ public class PlayerActivity extends AppCompatActivity {
 
             }
         });
-
     }
+
+    @Override
+    public void onBackPressed() {
+        exoPlayer.release();
+        super.onBackPressed();
+    }
+
 }
 

@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new We_Fragment()).commit();
 
             case R.id.nav_exit:
+                finish();
                 break;
         }
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
