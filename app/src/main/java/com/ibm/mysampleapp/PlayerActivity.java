@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 public class PlayerActivity extends AppCompatActivity {
@@ -39,7 +40,6 @@ public class PlayerActivity extends AppCompatActivity {
     ArrayList MyProg;
     Thread updateSeekBar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ public class PlayerActivity extends AppCompatActivity {
         Intent intent = getIntent();
         soundPath = intent.getStringExtra("url");
         namePath = intent.getStringExtra("urlName");
-        isFave = intent.getBooleanExtra("isFave",isFave); /// ???
+        isFave = intent.getBooleanExtra("isFave",false);
         setPointer();
     }
 
@@ -57,9 +57,10 @@ public class PlayerActivity extends AppCompatActivity {
         btnPlay = findViewById(R.id.btnPlay);
         btnPre = findViewById(R.id.btnPre);
         btnPause = findViewById(R.id.btnPause);
-        btnStop = findViewById(R.id.btnStop);
         btnFavorites = findViewById(R.id.btnFavorites);
         btnFavoritesOn = findViewById(R.id.btnFavoritesOn);
+        btnPause = findViewById(R.id.btnPause);
+
         txtProgram = findViewById(R.id.txtProgram);
         seekBar = findViewById(R.id.seekBar);
 
@@ -76,7 +77,6 @@ public class PlayerActivity extends AppCompatActivity {
         }
         try {
             mediaPlayer.prepare(); // might take long! (for buffering, etc)
-            Log.e("prepare request","done preparing");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -102,15 +102,15 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediaPlayer.pause();
-                length = 0;
-                btnPause.setVisibility(View.INVISIBLE);
-                btnPlay.setVisibility(View.VISIBLE);
-            }
-        });
+//        btnStop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mediaPlayer.pause();
+//                length = 0;
+//                btnPause.setVisibility(View.INVISIBLE);
+//                btnPlay.setVisibility(View.VISIBLE);
+//            }
+//        });
 
         btnFavorites.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,12 +156,21 @@ public class PlayerActivity extends AppCompatActivity {
 
             }
         });
+
     }
+
 
     @Override
     public void onBackPressed() {
+        try {
+          getIntent().putExtra("isFave",isFave);
+            mediaPlayer.release();
+        } catch (Exception e){
+            Log.e("skip", "onBackPressed: no object" );
+
+        }
         super.onBackPressed();
-        mediaPlayer.stop();
-       finish();
+
+        //finish();
     }
 }

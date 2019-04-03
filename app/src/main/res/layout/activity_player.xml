@@ -9,6 +9,18 @@
     android:weightSum="10"
     tools:context=".PlayerActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#9754cb"
+        android:elevation="@dimen/_4sdp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    </android.support.v7.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -38,6 +50,13 @@
             android:textSize="@dimen/_12ssp"
 
             />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_info"
+            android:background="#00FFFFFF"
+            android:id="@+id/btnInfo"/>
 
     </LinearLayout>
 
@@ -84,7 +103,8 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_toRightOf="@+id/btnPlay"
-                android:background="@drawable/ic_skip" />
+                android:background="@drawable/ic_forward_10"
+                android:layout_marginLeft="@dimen/_35sdp"/>
 
             <ImageButton
                 android:id="@+id/btnPre"
@@ -92,7 +112,8 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_toLeftOf="@+id/btnPlay"
-                android:background="@drawable/ic_skipre" />
+                android:background="@drawable/ic_replay_10"
+                android:layout_marginRight="@dimen/_35sdp"/>
 
             <TextView
                 android:id="@+id/startTime"
@@ -110,19 +131,10 @@
                 android:layout_above="@+id/seekBar"
                 android:layout_alignParentRight="true"
                 android:layout_margin="@dimen/_10sdp"
-                android:text="99:99"
+                android:text="00:00"
                 android:textColor="#000000" />
 
-            <ImageButton
-                android:id="@+id/btnStop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btnPause"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:background="#00FFFFFF"
-                android:src="@drawable/stop"
-                android:visibility="visible" />
+
 
             <ImageButton
                 android:id="@+id/btnFavorites"
@@ -132,7 +144,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="@dimen/_40sdp"
                 android:layout_marginLeft="@dimen/_60sdp"
-                android:layout_toRightOf="@+id/btnStop"
+                android:layout_toLeftOf="@+id/endTime"
                 android:background="#00FFFFFF"
                 android:visibility="visible"
                 app:srcCompat="@android:drawable/btn_star_big_off" />
@@ -145,7 +157,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="@dimen/_40sdp"
                 android:layout_marginLeft="@dimen/_60sdp"
-                android:layout_toRightOf="@+id/btnStop"
+                android:layout_toLeftOf="@+id/endTime"
                 android:background="#00FFFFFF"
                 android:visibility="invisible"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
@@ -156,9 +168,10 @@
                 android:layout_below="@+id/btnPause"
                 android:layout_marginTop="@dimen/_43sdp"
                 android:layout_marginRight="@dimen/_60sdp"
-                android:layout_toLeftOf="@+id/btnStop"
+                android:layout_toRightOf="@+id/startTime"
                 android:background="#00FFFFFF"
                 android:src="@drawable/ic_share"
+                android:id="@+id/btnShare"
                 />
 
         </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.ibm.mysampleapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -58,8 +59,8 @@ public class Tab extends Fragment {
     private View rootView;
 
     private List<ClsRadio> radioList;
-    private List<ClsRadio> faveList;
-    private ListAdapter adapter;
+    public static List<ClsRadio> faveList;
+    public static ListAdapter adapter;
     private ListView listView;
 
     private OnFragmentInteractionListener mListener;
@@ -225,12 +226,12 @@ public class Tab extends Fragment {
                         broadcasts newBroadcast = new broadcasts();
                         for (int j = 0; j < radioList.size(); j += 1) {
 
-                            if(radioList.get(j).getIsFave() && !(faveList.contains(radioList.get(j))) && faveList.get(j) !=null){ // if the show is listed as favourite and is not already in the faveList, we add it
+                            if(radioList.get(j).getIsFave() && !(faveList.contains(radioList.get(j)))){ // if the show is listed as favourite and is not already in the faveList, we add it
                                 faveList.add(radioList.get(j));
                             }
-//                            if(!radioList.get(j).getIsFave() && (faveList.contains(radioList.get(j))) && faveList.get(j) !=null){ // if the show is not listed as favourite and is still in the faveList, we remove it
-//                                faveList.remove(radioList.get(j));
-//                            }
+                            if(!radioList.get(j).getIsFave() && (faveList.contains(radioList.get(j)))){ // if the show is not listed as favourite and is still in the faveList, we remove it
+                                faveList.remove(radioList.get(j));
+                            }
                             if ((Backendless.Data.of(jsonObject.getString("filePath")).equals(radioList.get(j).filePath))) { // checks if broadcasts already exists according to the filePath
                                 newBroadcast.setVodId(jsonObject.getString("vodId"));
                                 newBroadcast.setStreamName(jsonObject.getString("streamName"));
