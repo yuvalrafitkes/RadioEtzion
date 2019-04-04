@@ -5,9 +5,6 @@
 
     <group android:checkableBehavior="single">
 
-        <item android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
-            android:title="Home Screen"/>
         <item
             android:id="@+id/nav_mic"
             android:icon="@drawable/ic_mic_black_24dp"
@@ -15,13 +12,13 @@
 
         <item
             android:id="@+id/nav_contact"
-            android:icon="@drawable/ic_search"
-            android:title="Contact Us" />
+            android:icon="@drawable/ic_phone"
+            android:title="צרו קשר" />
 
         <item
             android:id="@+id/nav_we"
             android:icon="@drawable/ic_group"
-            android:title="Who are We?" />
+            android:title="מי אנחנו?" />
     </group>
 
     <item android:title="Commuicate">
@@ -34,13 +31,13 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_share"
-                android:title="Share" />
+                android:title="שתף" />
 
 
             <item
                 android:id="@+id/nav_exit"
                 android:icon="@drawable/ic_exit"
-                android:title="Exit the App" />
+                android:title="יציאה" />
         </menu>
     </item>
 

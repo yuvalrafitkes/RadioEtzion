@@ -19,10 +19,10 @@ public class SplashScreen extends AppCompatActivity {
                 .withSplashTimeOut(2000)
                 .withBackgroundColor(Color.parseColor("#FF9754CB"))
                 .withLogo(R.drawable.etzion)
-                .withHeaderText("Welcome to are Radio")
+                .withHeaderText("ברוכים הבאים לרדיו שלנו")
                 .withFooterText("CopyRight 2019")
-                .withBeforeLogoText("Yuval,Nir and Assaf Dev,Ltd")
-                .withAfterLogoText("This is Radio Etzion");
+                .withBeforeLogoText("רדיו עציון")
+                .withAfterLogoText("Yuval,Nir and Assaf Dev,Ltd");
 
         easySplashScreen.getHeaderTextView().setTextColor(Color.WHITE);
         easySplashScreen.getFooterTextView().setTextColor(Color.WHITE);

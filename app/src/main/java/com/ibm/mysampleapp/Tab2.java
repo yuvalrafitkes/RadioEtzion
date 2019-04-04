@@ -1,5 +1,6 @@
 package com.ibm.mysampleapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import im.delight.android.webview.AdvancedWebView;
 
 
 /**
@@ -22,12 +28,13 @@ public class Tab2 extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private WebView webView;
+    private View myView;
     private OnFragmentInteractionListener mListener;
+    private AdvancedWebView mWebView;
 
     public Tab2() {
         // Required empty public constructor
@@ -64,8 +71,25 @@ public class Tab2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_start_chat, container, false);
+        myView = inflater.inflate(R.layout.activity_facebook, container, false);
+        setPointer();
+
+        return myView;
     }
+
+    private void setPointer() {
+        webView = myView.findViewById(R.id.webview);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("http://a-z-marketing.info/facebook-comments/");
+
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+    }
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
