@@ -350,12 +350,10 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public void onBackPressed() {
         exoPlayer.release();
         super.onBackPressed();
     }
-
 }
 

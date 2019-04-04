@@ -19,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener,
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         setPointer();
         navigationBar();
     }
-
+    
 
     private void navigationBar() {
         Toolbar toolbar = findViewById(R.id.toolBar);
@@ -64,9 +65,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Tab()).commit();
-                break;
+
             case R.id.nav_contact:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Conact_Us_Fragment()).commit();
                 break;
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new We_Fragment()).commit();
 
             case R.id.nav_exit:
-                finish();
+              alertDialogMassege();
                 break;
         }
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
@@ -91,11 +90,13 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         return true;
     }
 
+
+
     private void setPointer() {
         tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("תוכניות"));
         tabLayout.addTab(tabLayout.newTab().setText("מועדפים"));
-        tabLayout.addTab(tabLayout.newTab().setText("עדכונים"));
+        tabLayout.addTab(tabLayout.newTab().setText("תגובות"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.viewPager);
@@ -126,6 +127,34 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
     }
 
+
+    private void alertDialogMassege() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("האם אתה מעוניין לצאת?");
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(
+                "להשאר",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        builder.setNegativeButton(
+                "לצאת",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 }
+
+
 
 
