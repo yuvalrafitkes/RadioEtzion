@@ -80,7 +80,7 @@ public class Tab2 extends Fragment {
     private void setPointer() {
         webView = myView.findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://a-z-marketing.info/facebook-comments/");
+        webView.loadUrl("https://www.ynet.co.il/home/0,7340,L-8,00.html");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);

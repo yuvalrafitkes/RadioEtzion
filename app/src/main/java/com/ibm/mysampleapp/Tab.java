@@ -200,7 +200,6 @@ public class Tab extends Fragment {
                 try {
                     JSONArray jsonArray = new JSONArray(jsonString);
 
-                    Backendless.initApp(context, "2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00");
 
                     Backendless.Messaging.registerDevice(new AsyncCallback<DeviceRegistrationResult>() { // launching the push notification we created via backendless and firebase
                         @Override

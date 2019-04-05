@@ -18,11 +18,12 @@
 
     <TextView
         android:id="@+id/itemShow_Name"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_170sdp"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="-1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="20dp"
         android:layout_toLeftOf="@id/itemShow_Pic"
+        android:layout_toEndOf="@+id/imageButton2"
         android:padding="@dimen/_10sdp"
         android:text="show name"
         android:textColor="#382727"
