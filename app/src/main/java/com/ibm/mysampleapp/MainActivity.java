@@ -32,6 +32,9 @@ import com.backendless.Backendless;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ibm.mysampleapp.Defaults.API_KEY;
+import static com.ibm.mysampleapp.Defaults.APPLICATION_ID;
+
 
 public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
     //REQUEST CODES
     final private int WAKE_LOCK_REQCODE=100;
-    final private int GET_ACCOUNTS_REQCODE=101;
+
     final private int WRITE_EXTERNAL_STORAGE_REQCODE=102;
     final private int WIFI_REQCODE=103;
 
@@ -82,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
         if (!listPermissionNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WAKE_LOCK_REQCODE );
-            ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),GET_ACCOUNTS_REQCODE );
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WIFI_REQCODE );
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WRITE_EXTERNAL_STORAGE_REQCODE );
         } else {
@@ -95,11 +97,6 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case WAKE_LOCK_REQCODE: //this checks the specific permission explicitly
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            case GET_ACCOUNTS_REQCODE:
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
                     return;
@@ -176,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
 
     private void setPointer() {
-        Backendless.initApp(context, "2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00");
+        Backendless.initApp(context, APPLICATION_ID, API_KEY);
 
         tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_shows));
