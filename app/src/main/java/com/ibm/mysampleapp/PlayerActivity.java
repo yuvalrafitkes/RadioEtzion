@@ -157,8 +157,15 @@ public class PlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog alertDialog = new AlertDialog.Builder(PlayerActivity.this).create();
-                alertDialog.setTitle(""+R.string.player_info_header);
-                alertDialog.setMessage(""+(R.string.player_info_txt));
+                alertDialog.setTitle("INFO:");
+                alertDialog.setMessage(" תכנית עם מרחב מוהר, סגן אלוף העולם באגרוף.\n" +
+                        "                        בגיל 22 עם התואר \"אלוף ישראל באגרוף\" וכרטיס בכיוון אחד לניו יורק יוצא מרחב מוהר לארה\"ב.\n" +
+                        "                        הוא משאיר מאחוריו הורים, חברים ומעריצים ומבקש להגשים את חלום חייו, להשיג את התואר אלוף העולם באגרוף.\n" +
+                        "                        אחרי אימונים מפרכים הוא פורץ לזירה עטוף בדגל ישראל, אבל הקרב הופך להיות נקודת מפנה בחייו האישיים והמקצועיים.\n" +
+                        "\n" +
+                        "                        מרחב חושף את הסיפור האישי שלו מעורר השראה בכל הנושאים הקשורים למוטיבציה, מצוינות, לספורט כדרך לניתוב כעסים.\n" +
+                        "\n" +
+                        "                        שדרים: אושר מוזס ואורי בן חנן");
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {

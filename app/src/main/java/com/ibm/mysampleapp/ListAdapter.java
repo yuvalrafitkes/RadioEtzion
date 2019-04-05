@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -45,8 +47,9 @@ public class ListAdapter extends BaseAdapter{
         String showName = radioList.get(position).vodName;
         //set names
         TextView txtShowName = view.findViewById(R.id.itemShow_Name);
+        ImageButton playBtn = view.findViewById(R.id.imageButton2);
         txtShowName.setText(initializeText(showName));
-        ;
+
         //TODO = לקבל שמות שדרנים במידה ויעלו בכלל
 //            TextView txtShowReporter = view.findViewById(R.id.itemShow_Reporter);
 //        txtShowReporter.setText(radioList.get(position).);
@@ -61,17 +64,18 @@ public class ListAdapter extends BaseAdapter{
         txtShowName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, PlayerActivity.class);
-                //URL
-                String sendPath="http://be.repoai.com:5080/WebRTCAppEE/"+radioList.get(position).getFilePath();
-                String sendName=radioList.get(position).getVodName();
-                initializeText(sendName);
-                Log.e("fileName", "onClick: "+sendPath);
-                i.putExtra("url",sendPath);
-                i.putExtra("urlName",initializeText(sendName));
-                context.startActivity(i);
+                goToPlayer(position);
             }
         });
+
+
+        playBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToPlayer(position);
+            }
+        });
+
 
         return view;
     }
@@ -80,5 +84,17 @@ public class ListAdapter extends BaseAdapter{
         txt = txt.replace("_"," ");
         txt = txt.replace(".mp4","");
         return txt;
+    }
+
+    public void goToPlayer(int position){
+        Intent i = new Intent(context, PlayerActivity.class);
+        //URL
+        String sendPath="http://be.repoai.com:5080/WebRTCAppEE/"+radioList.get(position).getFilePath();
+        String sendName=radioList.get(position).getVodName();
+        initializeText(sendName);
+        Log.e("fileName", "onClick: "+sendPath);
+        i.putExtra("url",sendPath);
+        i.putExtra("urlName",initializeText(sendName));
+        context.startActivity(i);
     }
 }
