@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:id="@+id/drawerLayout2">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#9754cb"
+        android:elevation="@dimen/_4sdp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Radio Etzion"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_18ssp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_7sdp">
+
+        <TextView
+            android:id="@+id/weTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolBar"
+            android:text="@string/who_are_we"
+            android:textSize="@dimen/_20ssp"
+            android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/weTxt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolBar"
+            android:text="@string/who_are_we2"
+            android:textSize="@dimen/_16ssp"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_below="@+id/weTxt"
+            android:textColor="#000"
+            android:text="@string/who_are_we_txt_head_pop"
+            android:textSize="@dimen/_12sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weTxt"
+            android:text="@string/who_are_we_txt_pop"
+            android:textSize="@dimen/_10sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_below="@+id/weTxt"
+            android:text="@string/who_are_we_txt_head_about"
+            android:textSize="@dimen/_12sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weTxt"
+            android:text="@string/who_are_we_txt_about"
+            android:textSize="@dimen/_10sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_below="@+id/weTxt"
+            android:text="@string/who_are_we_txt_head_fun"
+            android:textSize="@dimen/_12sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weTxt"
+            android:text="@string/who_are_we_txt_fun"
+            android:textSize="@dimen/_10sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_below="@+id/weTxt"
+            android:textColor="#000"
+            android:text="@string/who_are_we_txt_head_staff"
+            android:textSize="@dimen/_12sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weTxt"
+            android:text="@string/who_are_we_txt_staff"
+            android:textSize="@dimen/_10sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_below="@+id/weTxt"
+            android:textColor="#000"
+            android:text="@string/who_are_we_txt_head_village"
+            android:textSize="@dimen/_12sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weTxt"
+            android:text="@string/who_are_we_txt_village"
+            android:textSize="@dimen/_10sdp"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

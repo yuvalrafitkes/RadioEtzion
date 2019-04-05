@@ -168,26 +168,7 @@ public class PlayerActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
-//FAVORITE BUTTON--------------------------------------------------------------------------------------------------
 
-        btnFavorite = findViewById(R.id.btnFavorits);
-        btnFavoriteOn = findViewById(R.id.btnFavoritsOn);
-
-        btnFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btnFavorite.setVisibility(View.INVISIBLE);
-                btnFavoriteOn.setVisibility(View.VISIBLE);
-            }
-        });
-
-        btnFavoriteOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btnFavorite.setVisibility(View.VISIBLE);
-                btnFavoriteOn.setVisibility(View.INVISIBLE);
-            }
-        });
 
 //X10 MIN--NEXT BUTTON---------------------------------------------------
         btnNext = findViewById(R.id.btnNext);
@@ -195,7 +176,7 @@ public class PlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 long currentTime =exoPlayer.getCurrentPosition();
-                currentTime +=600000;
+                currentTime +=300000;
                 exoPlayer.seekTo(currentTime);
             }
         });
@@ -206,7 +187,7 @@ public class PlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 long currentTime =exoPlayer.getCurrentPosition();
-                currentTime -=600000;
+                currentTime -=300000;
                 exoPlayer.seekTo(currentTime);
             }
         });
