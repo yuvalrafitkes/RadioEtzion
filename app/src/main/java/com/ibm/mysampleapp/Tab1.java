@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 
@@ -28,6 +31,9 @@ public class Tab1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private WebView webView;
+    private View view;
 
     private OnFragmentInteractionListener mListener;
 
@@ -67,7 +73,18 @@ public class Tab1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+        view = inflater.inflate(R.layout.activity_events, container, false);
+        setPointer();
+        return view;
+    }
+
+    private void setPointer() {
+        webView = view.findViewById(R.id.eventsWebview);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://www.etzion.besite.org.il/blog");
+
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
