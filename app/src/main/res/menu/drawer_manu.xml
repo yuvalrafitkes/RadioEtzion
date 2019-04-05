@@ -8,16 +8,16 @@
         <item
             android:id="@+id/nav_contact"
             android:icon="@drawable/ic_phone"
-            android:title="צרו קשר" />
+            android:title="@string/drawer_contact" />
 
         <item
             android:id="@+id/nav_we"
             android:icon="@drawable/ic_group"
-            android:title="מי אנחנו?" />
+            android:title="@string/drawer_about" />
         <item
             android:id="@+id/nav_chat"
             android:icon="@drawable/ic_mic_black_24dp"
-            android:title="צ'אט" />
+            android:title="@string/drawer_chat" />
     </group>
 
     <item android:title="Commuicate">
@@ -25,18 +25,18 @@
             <item
                 android:id="@+id/nav_mail"
                 android:icon="@drawable/ic_email"
-                android:title="Email" />
+                android:title="@string/drawer_email" />
 
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_share"
-                android:title="שתף" />
+                android:title="@string/drawer_share" />
 
 
             <item
                 android:id="@+id/nav_exit"
                 android:icon="@drawable/ic_exit"
-                android:title="יציאה" />
+                android:title="@string/drawer_exit" />
         </menu>
     </item>
 

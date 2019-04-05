@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolBar"
         android:layout_marginLeft="@dimen/_130sdp"
-        android:text="צור קשר"
+        android:text="@string/drawer_contact"
         android:textColor="#000000"
         android:textSize="@dimen/_20ssp" />
 
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/weTxt"
         android:layout_marginLeft="@dimen/_60ssp"
-        android:text="טלפון   04-9124536 "
+        android:text="@string/contact_phone"
         android:textSize="@dimen/_25ssp" />
 
     <TextView
@@ -55,7 +55,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="מייל dlm.school@b-e.org.il      "
+        android:text="@string/contact_email"
         android:textSize="@dimen/_21ssp" />
 
 
