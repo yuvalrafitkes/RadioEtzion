@@ -1,37 +1,29 @@
 <resources>
-    <string name="app_name">RadioEtzion</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name" translatable="false">RadioEtzion</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
 
     <!-- PERMISSION STRINGS -->
-    <string name="perm_deny">עלייך לאפשר גישה לכל ההרשאות המבוקשות</string>
+    <string name="perm_deny">You must enable access to all requested permissions</string>
 
     <!-- TAB STRINGS -->
-    <string name="tab_shows">תוכניות</string>
-    <string name="tab_events">אירועים</string>
-    <string name="tab_chat">CHAT</string>
+    <string name="tab_shows">Shows</string>
+    <string name="tab_events">Events</string>
+    <string name="tab_chat" translatable="false">CHAT</string>
 
     <!-- EXIT ALERT DIALOG STRINGS -->
-    <string name="AD_txt">האם אתה בטוח שאתה מעוניין לצאת?</string>
-    <string name="AD_stay">להשאר</string>
-    <string name="AD_leave">לצאת</string>
-
+    <string name="AD_txt">Are you sure you would like to leave the application?</string>
+    <string name="AD_stay">STAY</string>
+    <string name="AD_leave">LEAVE</string>
     <!-- PLAYER STRINGS -->
-    <string name="player_info_txt">
-                        תכנית עם מרחב מוהר, סגן אלוף העולם באגרוף.
-                        בגיל 22 עם התואר "אלוף ישראל באגרוף" וכרטיס בכיוון אחד לניו יורק יוצא מרחב מוהר לארה"ב.
-                        הוא משאיר מאחוריו הורים, חברים ומעריצים ומבקש להגשים את חלום חייו, להשיג את התואר אלוף העולם באגרוף.
-                        אחרי אימונים מפרכים הוא פורץ לזירה עטוף בדגל ישראל, אבל הקרב הופך להיות נקודת מפנה בחייו האישיים והמקצועיים.
 
-                        מרחב חושף את הסיפור האישי שלו מעורר השראה בכל הנושאים הקשורים למוטיבציה, מצוינות, לספורט כדרך לניתוב כעסים.
 
-                        שדרים: אושר מוזס ואורי בן חנן
-    </string>
-    <string name="player_info_header">על התוכנית:</string>
 
+    <!-- NAVIGATION BAR STRINGS -->
+    <string name="">Our Village:</string>
 
 
 
@@ -40,33 +32,17 @@
 
 
     <!-- WHO ARE WE STRINGS -->
-    <string name="who_are_we">בית אקשטיין</string>
-    <string name="who_are_we2">סניף פרדח חנה - כרכור</string>
-    <string name="who_are_we_txt_head_pop">אוכלוסית היעד:</string>
-    <string name="who_are_we_txt_pop">
-        ילדים עם מוגבלות שכלית התפתחותית ברמה בינונית ונמוכה.
-כפר הילדים הינו מסגרת חינוכית טיפולית לילדים בעלי מוגבלויות בגילאי 6-21.
-    </string>
-    <string name="who_are_we_txt_head_about">על כפר הילדים:</string>
-    <string name="who_are_we_txt_about">
-        בכפר, שמונה בתים המותאמים לתפקודי הדיירים ולצרכים המיוחדים שלהם.
-כפר הילדים נמצא בתוך סביבה כפרית ירוקה ושלווה ומאפשר לדייריו אינספור פעילויות פנאי וכיף במרחב הכפרי.
-דיירי הכפר זוכים לאיכות חיים גבוהה באמצעות טיפול מסור, פעילות פנאי, בי"ס הפועל בסמוך למעון, טיפול רפואי ועוד.
-בכפר מתגוררים ילדים ברמות תפקוד שונות מילדים צעירים בתפקוד קוגנטיבי גבוה ועד דיירים בוגרים בתפקוד קוגנטיבי נמוך.
-החיים בכפר מתנהלים על מי מנוחות, החל משעות הבוקר הכוללות מקלחת, ארוחת בוקר בריאה וליווי צמוד לבית הספר ולמרכז התעסוקה הנמצא בכפר.
-    </string>
-    <string name="who_are_we_txt_head_fun">פנאי והעשרה:</string>
-    <string name="who_are_we_txt_fun">
-בכפר מגוון רחב של פעילות העשרה ופנאי לדיירים כמו: רכיבה טיפולית, גינון טיפולי,  סנוזלן, טיפול רגשי דרך כלבים, מוזיקה ולהקה, אומנות, אומנויות לחימה, מתנדבות מכפר פינס במסגרת מחויבות אישית, סטודנטיות מרופין שמעבירות סדנאות, תנועות נוער כדוגמת הצופים וכנפיים של קרמבו, שיחות סקייפ עם ההורים ועוד.
-מסורת של שנים רבות נשמרת בכפר כאשר בכל שנה חוגגים לכל ילדי הכפר שהגיעו לגיל מצווה בארוע גדול וחגיגי בהשתתפות בני המשפחה והצוות.
-    </string>
-    <string name="who_are_we_txt_head_staff">צוות המסגרת:</string>
-    <string name="who_are_we_txt_staff">
-הצוות הטיפולי כולל עובדות סוציאליות, מרפאה בעיסוק, קלינאי תקשורת, מנתחת התנהגות,פיזיוטרפיסט ודיאטנית קלינית.
-    </string>
-    <string name="who_are_we_txt_head_village">שלוחת כפר הילדים:</string>
-    <string name="who_are_we_txt_village">
-    בית פרטי ומפואר עם חצר גדולה, לדיירים בתפקוד גבוה. דיירי השלוחה משולבים בקהילה בכל תחומי החיים.המעון בפיקוח משרד הרווחה - האגף לטיפול באדם עם מוגבלות שכלית התפתחותית.
-    </string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="who_are_we">Beit Eckstein</string>
+    <string name="who_are_we2">Pardes Hana - Karkur</string>
+    <string name="who_are_we_txt_head_pop">Audience:</string>
+    <string name="who_are_we_txt_pop">Children with intellectual disabilities. The children\'s village is an educational framework.</string>
+    <string name="who_are_we_txt_head_about">Our Village:</string>
+    <string name="who_are_we_txt_about">In the village, eight houses are adapted to the functions of the residents and their special needs. The children\'s village is located in a green and peaceful rural environment and offers its residents countless leisure and fun activities in the countryside. The residents of the village enjoy a high quality of life through dedicated care, leisure activities, a nearby school, medical treatment and more. The village has children of different levels of functioning from young children in high cognitive functioning to adult tenants in low cognitive functioning. Life in the village is quite comfortable, starting with the morning, including a shower, a healthy breakfast and close support to the school and the employment center in the village.</string>
+    <string name="who_are_we_txt_head_fun">Activities and Leisure:</string>
+    <string name="who_are_we_txt_fun">"The village offers a wide range of enrichment and recreation activities for residents, such as: Therapeutic riding, therapeutic gardening, Snoezelen, emotional therapy through dogs, music and band, art, martial arts, volunteers from Kfar Pines as part of personal commitment, Students from Ruppin conducting workshops, youth movements such as Scouts and Wings of Krembo, Skype conversations with parents and more. A tradition of many years is preserved in the village. Every year, all the children of the village who have reached the age of mitzva are celebrated at a festive event with the participation of the family and the staff. "</string>
+    <string name="who_are_we_txt_head_staff">Our Staff:</string>
+    <string name="who_are_we_txt_staff">"The therapeutic staff includes social workers, occupational therapists, speech therapists, behavioral analysts, physiotherapists and clinical dietitians. "</string>
+    <string name="who_are_we_txt_head_village">Children\'s Village Extension:</string>
+    <string name="who_are_we_txt_village">"A luxurious private home with a large yard for high-functioning tenants. Residents of the branch are integrated into the community in all aspects of life. The facility is supervised by the Ministry of Social Affairs - the Department for the Treatment of People with Developmental Disabilities. "</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 </resources>
