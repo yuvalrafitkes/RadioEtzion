@@ -32,11 +32,8 @@ import com.backendless.Backendless;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ibm.mysampleapp.Defaults.API_KEY;
-import static com.ibm.mysampleapp.Defaults.APPLICATION_ID;
 
-
-public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener,
+public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInteractionListener, Tab1.OnFragmentInteractionListener,
         NavigationView.OnNavigationItemSelectedListener {
     TabLayout tabLayout;
     private DrawerLayout drawerLayout;
@@ -44,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
     //REQUEST CODES
     final private int WAKE_LOCK_REQCODE=100;
+    final private int GET_ACCOUNTS_REQCODE=101;
+    final private int WRITE_EXTERNAL_STORAGE_REQCODE=102;
     final private int WIFI_REQCODE=103;
 
     Context context;
@@ -83,7 +82,9 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
         if (!listPermissionNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WAKE_LOCK_REQCODE );
+            ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),GET_ACCOUNTS_REQCODE );
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WIFI_REQCODE );
+            ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WRITE_EXTERNAL_STORAGE_REQCODE );
         } else {
             havePermission = true;
         }
@@ -98,7 +99,17 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
                     Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
                     return;
                 }
+            case GET_ACCOUNTS_REQCODE:
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
+                    return;
+                }
             case WIFI_REQCODE:
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            case WRITE_EXTERNAL_STORAGE_REQCODE:
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
                     return;
@@ -134,24 +145,28 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
+            case R.id.nav_mail:
+               break;
             case R.id.nav_contact:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Conact_Us_Fragment()).commit();
+                Intent Intent1 = new Intent(context,ContectActivity.class);
+                startActivity(Intent1);
                 break;
             case R.id.nav_share:
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 String shareBody = "Radio etzion";
-                String shareSub = "RADIO ETZION";
+                String shareSub = "אמא?אבא?סבא?סבתא?\n" + "בואו לשמוע אותי באפליקציה שלי!!";
                 intent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
                 intent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(intent, "SHARE ME"));
+                startActivity(Intent.createChooser(intent, "שתף עם חברים"));
                 break;
             case R.id.nav_we:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new We_Fragment()).commit();
+                Intent Intent2 = new Intent(context,WeActivity.class);
+                startActivity(Intent2);
                 break;
             case R.id.nav_exit:
                 alertDialogMassege();
+                break;
             case R.id.nav_chat:
                 Intent chatIntent = new Intent(context,StartChatActivity.class);
                 startActivity(chatIntent);
@@ -165,12 +180,11 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
 
     private void setPointer() {
-        Backendless.initApp(context, APPLICATION_ID, API_KEY);
+        Backendless.initApp(context, "2D5E6DA5-6B22-F84B-FFFD-67F33605D300", "2AE60844-6F42-4417-FFDE-44CA6B050B00");
 
         tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_shows));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_events));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_chat));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = findViewById(R.id.viewPager);

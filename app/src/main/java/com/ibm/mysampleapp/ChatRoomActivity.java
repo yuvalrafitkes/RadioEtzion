@@ -2,6 +2,7 @@ package com.ibm.mysampleapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,6 +28,9 @@ public class ChatRoomActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activty_chat_room);
+
+    Toolbar toolbar = findViewById(R.id.toolBar);
+    setSupportActionBar(toolbar);
 
     message = findViewById(R.id.message);
     messages = findViewById(R.id.messages);

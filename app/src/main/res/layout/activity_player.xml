@@ -103,7 +103,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_toRightOf="@+id/btnPlay"
-                android:background="@drawable/ic_forward_10"
+                android:background="@drawable/ic_forward_5"
                 android:layout_marginLeft="@dimen/_35sdp"/>
 
             <ImageButton
@@ -112,7 +112,7 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_toLeftOf="@+id/btnPlay"
-                android:background="@drawable/ic_replay_10"
+                android:background="@drawable/ic_replay_5"
                 android:layout_marginRight="@dimen/_35sdp"/>
 
             <TextView
@@ -136,39 +136,13 @@
 
 
 
-            <ImageButton
-                android:id="@+id/btnFavorits"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btnPause"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:layout_marginLeft="@dimen/_60sdp"
-                android:layout_toLeftOf="@+id/endTime"
-                android:background="#00FFFFFF"
-                android:visibility="visible"
-                app:srcCompat="@android:drawable/btn_star_big_off" />
-
-            <ImageButton
-                android:id="@+id/btnFavoritsOn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btnPause"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:layout_marginLeft="@dimen/_60sdp"
-                android:layout_toLeftOf="@+id/endTime"
-                android:background="#00FFFFFF"
-                android:visibility="invisible"
-                app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/btnPause"
-                android:layout_marginTop="@dimen/_43sdp"
-                android:layout_marginRight="@dimen/_60sdp"
-                android:layout_toRightOf="@+id/startTime"
+                android:layout_below="@+id/btnPlay"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:background="#00FFFFFF"
                 android:src="@drawable/ic_share"
                 android:id="@+id/btnShare"
