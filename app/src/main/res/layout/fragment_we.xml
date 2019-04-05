@@ -16,7 +16,6 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,37 +25,101 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_7sdp">
+
     <TextView
         android:id="@+id/weTxt"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolBar"
-        android:text="בית ספר לילדים עם לקויות למידה       "
+        android:text="@string/who_are_we"
         android:textSize="@dimen/_20ssp"
+        android:textColor="#000000"/>
+    <TextView
+        android:id="@+id/weTxt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolBar"
+        android:text="@string/who_are_we2"
+        android:textSize="@dimen/_16ssp"
         android:textColor="#000000"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/weTxt"
-        android:text="בתי ספר לילדים עם לקויות למידה מיועדים לתלמידים מכיתה ג' ועד יב',  אשר עברו ועדת השמה לבתי ספר לחינוך מיוחד והופנו על ידי ועדת השמה ושיבוץ ברשויות השונות
-         ללמוד בבתי ספר לילדים עם לקויות למידה.כיתות בנות 10-12 תלמידים, מחנך/ת ועוזר/ת הוראה.
-בבתי הספר שלנו צוות רב מקצועי וצוות פארא רפואי נרחב - תראפיסטים/יות בתנועה, אומנות, דרמה ומוסיקה.
-תכנית תמיכה אישית לכל תלמיד, בתחום הלימודי, הרגשי והחברתי, תוך שיתוף התלמיד והוריו.
-הגשה לבחינות הבגרות במקצועות החובה ובמגמות לימוד ייחודיות כגון: מוסיקה, טכנולוגיה, תולדות האומנות.
-חינוך ערכי תוך זיקה לתכניות העשרה ייחודיות כגון: מנהיגות צעירה, איכות הסביבה, יזמים צעירים ועוד.מקצועות בחירה חווייתיים וחוגים כגון: גאגלינג, דרבוקות, קפוארה ועוד.
-
-פעילות קיץ בחודש יולי.אנו מאמינים במתן ביטוי לאינטיליגנציות מרובות ומאפשרים לתלמידינו לממש את הפוטנציאל הטמון בהם.
-האהבה והשיח בגובה העיניים והאמונה ביכולות של התלמיד, יוצרים אווירה ייחודית בה כל תלמיד יכול להשמיע ולהשפיע על חיי הקהילה הבית ספרית.
-
-בית ספר ללקויי למידה הנו בית ספר לחינוך מיוחד, מוכרים ושאינם רשמיים הפועלים ברשיון ובפיקוח משרד החינוך." />
-
-    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#000000"
-       />
-    //android:src="@drawable/fun" />
+        android:layout_marginTop="@dimen/_9sdp"
+        android:layout_below="@+id/weTxt"
+        android:textColor="#000"
+        android:text="@string/who_are_we_txt_head_pop"
+        android:textSize="@dimen/_12sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weTxt"
+        android:text="@string/who_are_we_txt_pop"
+        android:textSize="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:layout_below="@+id/weTxt"
+        android:text="@string/who_are_we_txt_head_about"
+        android:textSize="@dimen/_12sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weTxt"
+        android:text="@string/who_are_we_txt_about"
+        android:textSize="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:layout_below="@+id/weTxt"
+        android:text="@string/who_are_we_txt_head_fun"
+        android:textSize="@dimen/_12sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weTxt"
+        android:text="@string/who_are_we_txt_fun"
+        android:textSize="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:layout_below="@+id/weTxt"
+        android:textColor="#000"
+        android:text="@string/who_are_we_txt_head_staff"
+        android:textSize="@dimen/_12sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weTxt"
+        android:text="@string/who_are_we_txt_staff"
+        android:textSize="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:layout_below="@+id/weTxt"
+        android:textColor="#000"
+        android:text="@string/who_are_we_txt_head_village"
+        android:textSize="@dimen/_12sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weTxt"
+        android:text="@string/who_are_we_txt_village"
+        android:textSize="@dimen/_10sdp"/>
+</LinearLayout>
+
 
 
 </LinearLayout>

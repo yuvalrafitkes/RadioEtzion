@@ -19,6 +19,10 @@
             android:id="@+id/nav_we"
             android:icon="@drawable/ic_group"
             android:title="מי אנחנו?" />
+        <item
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/ic_group"
+            android:title="צ'אט" />
     </group>
 
     <item android:title="Commuicate">

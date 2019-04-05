@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Facebook"></activity>
+        <activity android:name=".StartChatActivity"></activity>
+        <activity android:name=".ChatRoomActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".PlayerActivity" />
         <activity android:name=".Fragments_list" />

@@ -5,5 +5,55 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
+
+    <!-- PERMISSION STRINGS -->
+    <string name="perm_deny">עלייך לאפשר גישה לכל ההרשאות המבוקשות</string>
+
+    <!-- TAB STRINGS -->
+    <string name="tab_shows">תוכניות</string>
+    <string name="tab_events">אירועים</string>
+    <string name="tab_chat">CHAT</string>
+
+    <!-- EXIT ALERT DIALOG STRINGS -->
+    <string name="AD_txt">האם אתה בטוח שאתה מעוניין לצאת?</string>
+    <string name="AD_stay">להשאר</string>
+    <string name="AD_leave">לצאת</string>
+
+    <!-- SPLASH SCREEN STRINGS -->
+    <string name="splash_welcome">ברוכים הבאים לרדיו שלנו</string>
+
+
+
+
+
+    <!-- WHO ARE WE STRINGS -->
+    <string name="who_are_we">בית אקשטיין</string>
+    <string name="who_are_we2">סניף פרדח חנה - כרכור</string>
+    <string name="who_are_we_txt_head_pop">אוכלוסית היעד:</string>
+    <string name="who_are_we_txt_pop">
+        ילדים עם מוגבלות שכלית התפתחותית ברמה בינונית ונמוכה.
+כפר הילדים הינו מסגרת חינוכית טיפולית לילדים בעלי מוגבלויות בגילאי 6-21.
+    </string>
+    <string name="who_are_we_txt_head_about">על כפר הילדים:</string>
+    <string name="who_are_we_txt_about">
+        בכפר, שמונה בתים המותאמים לתפקודי הדיירים ולצרכים המיוחדים שלהם.
+כפר הילדים נמצא בתוך סביבה כפרית ירוקה ושלווה ומאפשר לדייריו אינספור פעילויות פנאי וכיף במרחב הכפרי.
+דיירי הכפר זוכים לאיכות חיים גבוהה באמצעות טיפול מסור, פעילות פנאי, בי"ס הפועל בסמוך למעון, טיפול רפואי ועוד.
+בכפר מתגוררים ילדים ברמות תפקוד שונות מילדים צעירים בתפקוד קוגנטיבי גבוה ועד דיירים בוגרים בתפקוד קוגנטיבי נמוך.
+החיים בכפר מתנהלים על מי מנוחות, החל משעות הבוקר הכוללות מקלחת, ארוחת בוקר בריאה וליווי צמוד לבית הספר ולמרכז התעסוקה הנמצא בכפר.
+    </string>
+    <string name="who_are_we_txt_head_fun">פנאי והעשרה:</string>
+    <string name="who_are_we_txt_fun">
+בכפר מגוון רחב של פעילות העשרה ופנאי לדיירים כמו: רכיבה טיפולית, גינון טיפולי,  סנוזלן, טיפול רגשי דרך כלבים, מוזיקה ולהקה, אומנות, אומנויות לחימה, מתנדבות מכפר פינס במסגרת מחויבות אישית, סטודנטיות מרופין שמעבירות סדנאות, תנועות נוער כדוגמת הצופים וכנפיים של קרמבו, שיחות סקייפ עם ההורים ועוד.
+מסורת של שנים רבות נשמרת בכפר כאשר בכל שנה חוגגים לכל ילדי הכפר שהגיעו לגיל מצווה בארוע גדול וחגיגי בהשתתפות בני המשפחה והצוות.
+    </string>
+    <string name="who_are_we_txt_head_staff">צוות המסגרת:</string>
+    <string name="who_are_we_txt_staff">
+הצוות הטיפולי כולל עובדות סוציאליות, מרפאה בעיסוק, קלינאי תקשורת, מנתחת התנהגות,פיזיוטרפיסט ודיאטנית קלינית.
+    </string>
+    <string name="who_are_we_txt_head_village">שלוחת כפר הילדים:</string>
+    <string name="who_are_we_txt_village">
+    בית פרטי ומפואר עם חצר גדולה, לדיירים בתפקוד גבוה. דיירי השלוחה משולבים בקהילה בכל תחומי החיים.המעון בפיקוח משרד הרווחה - האגף לטיפול באדם עם מוגבלות שכלית התפתחותית.
+    </string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

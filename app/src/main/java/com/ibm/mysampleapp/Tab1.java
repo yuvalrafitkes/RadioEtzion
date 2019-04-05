@@ -32,7 +32,7 @@ public class Tab1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private WebView webView;
+    private WebView webView1;
     private View view;
 
     private OnFragmentInteractionListener mListener;
@@ -79,12 +79,12 @@ public class Tab1 extends Fragment {
     }
 
     private void setPointer() {
-        webView = view.findViewById(R.id.eventsWebview);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://www.etzion.besite.org.il/blog");
+        webView1 = view.findViewById(R.id.eventsWebview);
+        webView1.setWebViewClient(new WebViewClient());
+        webView1.loadUrl("https://www.etzion.besite.org.il/blog");
 
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        WebSettings webSettings1 = webView1.getSettings();
+        webSettings1.setJavaScriptEnabled(true);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
