@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/weTxt"
         android:layout_marginLeft="@dimen/_60ssp"
-        android:text="פקס     04-6735526 "
+        android:text="@string/contact_fax"
         android:textSize="@dimen/_25ssp" />
 
     <TextView
