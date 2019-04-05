@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
     //REQUEST CODES
     final private int WAKE_LOCK_REQCODE=100;
-
-    final private int WRITE_EXTERNAL_STORAGE_REQCODE=102;
     final private int WIFI_REQCODE=103;
 
     Context context;
@@ -86,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         if (!listPermissionNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WAKE_LOCK_REQCODE );
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WIFI_REQCODE );
-            ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WRITE_EXTERNAL_STORAGE_REQCODE );
         } else {
             havePermission = true;
         }
@@ -102,11 +99,6 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
                     return;
                 }
             case WIFI_REQCODE:
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            case WRITE_EXTERNAL_STORAGE_REQCODE:
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
                     return;
