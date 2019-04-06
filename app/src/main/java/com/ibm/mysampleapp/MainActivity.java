@@ -126,13 +126,9 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_mail:
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, "etzion_school@b-e.org.il");
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
-                if (emailIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(emailIntent);
-                }
+                String[] emails = new String[1];
+                emails[0]="etzion_schools@b-e.org.il";
+                composeEmail(emails,"");
                 break;
             case R.id.nav_contact:
                 Intent Intent1 = new Intent(context,ContectActivity.class);
@@ -228,7 +224,15 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         alert.show();
     }
 
-
+    public void composeEmail(String[] addresses, String subject) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 
 }
 
