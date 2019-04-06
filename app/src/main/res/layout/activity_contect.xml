@@ -50,6 +50,7 @@
         android:layout_below="@+id/weTxt"
         android:layout_marginLeft="@dimen/_60ssp"
         android:text="@string/contact_fax"
+
         android:textSize="@dimen/_25ssp" />
 
     <TextView
