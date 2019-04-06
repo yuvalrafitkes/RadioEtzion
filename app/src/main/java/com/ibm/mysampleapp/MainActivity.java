@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
 
     //REQUEST CODES
     final private int WAKE_LOCK_REQCODE=100;
-    final private int GET_ACCOUNTS_REQCODE=101;
-    final private int WRITE_EXTERNAL_STORAGE_REQCODE=102;
     final private int WIFI_REQCODE=103;
 
     Context context;
@@ -70,21 +68,13 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
         if (WakeLockPerm != PackageManager.PERMISSION_GRANTED) {
             listPermissionNeeded.add(Manifest.permission.WAKE_LOCK);
         }
-        if (getAccountPerm != PackageManager.PERMISSION_GRANTED) {
-            listPermissionNeeded.add(Manifest.permission.GET_ACCOUNTS);
-        }
-        if (useWriteExternalPerm != PackageManager.PERMISSION_GRANTED) {
-            listPermissionNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        }
         if (useWifiPerm != PackageManager.PERMISSION_GRANTED) {
             listPermissionNeeded.add(Manifest.permission.ACCESS_WIFI_STATE);
         }
 
         if (!listPermissionNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WAKE_LOCK_REQCODE );
-            ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),GET_ACCOUNTS_REQCODE );
             ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WIFI_REQCODE );
-            ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]),WRITE_EXTERNAL_STORAGE_REQCODE );
         } else {
             havePermission = true;
         }
@@ -99,17 +89,7 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
                     Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
                     return;
                 }
-            case GET_ACCOUNTS_REQCODE:
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
-                    return;
-                }
             case WIFI_REQCODE:
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            case WRITE_EXTERNAL_STORAGE_REQCODE:
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WAKE_LOCK) != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(context, R.string.perm_deny, Toast.LENGTH_SHORT).show();
                     return;
@@ -146,7 +126,14 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_mail:
-               break;
+                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                /* Fill it with Data */
+                emailIntent.setType("text/plain");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"Etzion_school@b-e.org.com"});
+
+                /* Send it off to the Activity-Chooser */
+                context.startActivity(Intent.createChooser(emailIntent, "Send Email..."));
+                break;
             case R.id.nav_contact:
                 Intent Intent1 = new Intent(context,ContectActivity.class);
                 startActivity(Intent1);
