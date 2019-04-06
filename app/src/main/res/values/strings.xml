@@ -22,8 +22,8 @@
 
     <!--CONTACT US STRINGS -->
     <string name="contact_phone">Phone:   04-6795325</string>
-    <string name="contact_fax">"Fax:     04-6795317 "</string>
-    <string name="contact_email">Email: Etzion_school@b-e.org.il</string>
+    <string name="contact_fax">Fax:     04-6795317</string>
+    <string name="contact_email">Email:   Etzion_school@b-e.org.il</string>
 
 
     <!-- NAVIGATION BAR STRINGS -->
