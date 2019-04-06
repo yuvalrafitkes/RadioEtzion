@@ -126,13 +126,13 @@ public class MainActivity extends AppCompatActivity implements Tab.OnFragmentInt
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_mail:
-                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-                /* Fill it with Data */
-                emailIntent.setType("text/plain");
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"Etzion_school@b-e.org.com"});
-
-                /* Send it off to the Activity-Chooser */
-                context.startActivity(Intent.createChooser(emailIntent, "Send Email..."));
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:")); // only email apps should handle this
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, "etzion_school@b-e.org.il");
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+                if (emailIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(emailIntent);
+                }
                 break;
             case R.id.nav_contact:
                 Intent Intent1 = new Intent(context,ContectActivity.class);
