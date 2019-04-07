@@ -20,10 +20,21 @@
     <string name="AD_leave">LEAVE</string>
     <!-- PLAYER STRINGS -->
 
+    <!--CONTACT US STRINGS -->
+    <string name="contact_phone">Phone:   04-6795325</string>
+    <string name="contact_fax">Fax:     04-6795317</string>
+    <string name="contact_email">Email:   Etzion_school@b-e.org.il</string>
 
 
     <!-- NAVIGATION BAR STRINGS -->
-    <string name="">Our Village:</string>
+    <string name="drawer_contact">Contact Us</string>
+    <string name="drawer_about">About</string>
+    <string name="drawer_chat">Chat</string>
+    <string name="drawer_email" translatable="false">Email</string>
+    <string name="drawer_share" translatable="false">Share</string>
+    <string name="drawer_exit">Exit</string>
+
+
 
     <!-- WHO ARE WE STRINGS -->
     <string name="who_are_we">Beit Eckstein</string>

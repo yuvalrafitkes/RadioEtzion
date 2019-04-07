@@ -18,4 +18,11 @@
     <string name="who_are_we_txt_head_village">"Детская деревня филиал: "</string>
     <string name="who_are_we_txt_village">"Роскошный частный дом с большим двором, высокой функционирования жителей. Жители общины во всех аспектах жизни в министерстве социальных дел-отдела для обработки лица с психическими недостатками развития "</string>
     <string name="who_are_we_txt_pop">"Дети с умственными и физическими пороками развития в среднем и нижнем уровнях. Детская деревня является платформой терапевтического образования для детей с ограниченными возможностями в возрасте 6-21. "</string>
+    <string name="drawer_contact">Свяжитесь с нами</string>
+    <string name="drawer_about">Кто мы такие</string>
+    <string name="drawer_chat">чат</string>
+    <string name="drawer_exit">выход</string>
+    <string name="contact_phone">Телефон: 04-6795325</string>
+    <string name="contact_fax">Факс:04-6795317</string>
+    <string name="contact_email">Электронная почта: Etzion_school@b-e.org.il</string>
 </resources>

@@ -18,4 +18,11 @@
     <string name="who_are_we_txt_staff">" הצוות הטיפולי כולל עובדות סוציאליות, מרפאה בעיסוק, קלינאי תקשורת, מנתחת התנהגות,פיזיוטרפיסט ודיאטנית קלינית.     "</string>
     <string name="who_are_we_txt_head_village">שלוחת כפר הילדים:</string>
     <string name="who_are_we_txt_village">"     בית פרטי ומפואר עם חצר גדולה, לדיירים בתפקוד גבוה. דיירי השלוחה משולבים בקהילה בכל תחומי החיים.המעון בפיקוח משרד הרווחה - האגף לטיפול באדם עם מוגבלות שכלית התפתחותית.     "</string>
+    <string name="drawer_exit">יציאה</string>
+    <string name="drawer_chat">צ\'אט</string>
+    <string name="drawer_about">מי אנחנו</string>
+    <string name="drawer_contact">צור קשר</string>
+    <string name="contact_phone">"טלפון:04-6795325      "</string>
+    <string name="contact_fax">"פקס:      04-6795317 "</string>
+    <string name="contact_email">אימייל: Etzion_school@b-e.org.il</string>
 </resources>

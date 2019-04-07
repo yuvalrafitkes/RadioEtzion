@@ -18,4 +18,11 @@
     <string name="who_are_we_txt_staff">"موظفو العلاجية بما في ذلك الأخصائيون الاجتماعيون، المعالج المهني، الباثولوجيا لغة الكلام، الجراح، وأخصائي العلاج الطبيعي وأخصائي التغذية. "</string>
     <string name="who_are_we_txt_head_village">"فرع قرية الأطفال: "</string>
     <string name="who_are_we_txt_village">"منزل خاص فاخرة بحديقة كبيرة، سكان عالية الأداء. سكان المجتمع في جميع جوانب الحياة في وزارة من الشؤون-التقسيم الاجتماعي للتعامل مع شخص ذوي الإعاقة الفكرية الإنمائية "</string>
+    <string name="drawer_exit">خروج</string>
+    <string name="drawer_chat">ثرثرة</string>
+    <string name="drawer_about">من نحن</string>
+    <string name="drawer_contact">اتصل بنا</string>
+    <string name="contact_phone">الهاتف: 04-6795325</string>
+    <string name="contact_fax">الفاكس:04-6795317</string>
+    <string name="contact_email">البريد الإلكتروني: Etzion_school@b-e.org.il</string>
 </resources>
